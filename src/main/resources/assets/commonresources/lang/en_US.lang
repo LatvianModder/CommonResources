@@ -1,0 +1,44 @@
+# Blocks
+commonresources.tile.ore.copper.name=Copper Ore
+commonresources.tile.ore.tin.name=Tin Ore
+commonresources.tile.ore.silver.name=Silver Ore
+commonresources.tile.ore.lead.name=Lead Ore
+commonresources.tile.ore.ruby.name=Ruby Ore
+commonresources.tile.ore.sapphire.name=Sapphire Ore
+commonresources.tile.ore.peridot.name=Peridot Ore
+#
+commonresources.tile.block.copper.name=Copper Block
+commonresources.tile.block.tin.name=Tin Block
+commonresources.tile.block.silver.name=Silver Block
+commonresources.tile.block.lead.name=Lead Block
+commonresources.tile.block.bronze.name=Bronze Block
+commonresources.tile.block.ruby.name=Ruby Block
+commonresources.tile.block.sapphire.name=Sapphire Block
+commonresources.tile.block.peridot.name=Peridot Block
+
+# Items
+commonresources.item.ingot.copper.name=Copper Ingot
+commonresources.item.ingot.tin.name=Tin Ingot
+commonresources.item.ingot.silver.name=Silver Ingot
+commonresources.item.ingot.lead.name=Lead Ingot
+commonresources.item.ingot.bronze.name=Bronze Ingot
+commonresources.item.gem.ruby.name=Ruby
+commonresources.item.gem.sapphire.name=Sapphire
+commonresources.item.gem.peridot.name=Peridot
+commonresources.item.nugget.copper.name=Copper Nugget
+commonresources.item.nugget.tin.name=Tin Nugget
+commonresources.item.nugget.silver.name=Silver Nugget
+commonresources.item.nugget.lead.name=Lead Nugget
+commonresources.item.nugget.bronze.name=Bronze Nugget
+commonresources.item.shard.ruby.name=Ruby Shard
+commonresources.item.shard.sapphire.name=Sapphire Shard
+commonresources.item.shard.peridot.name=Peridot Shard
+commonresources.item.gear.copper.name=Copper Gear
+commonresources.item.gear.tin.name=Tin Gear
+commonresources.item.gear.silver.name=Silver Gear
+commonresources.item.gear.lead.name=Lead Gear
+commonresources.item.gear.bronze.name=Bronze Gear
+commonresources.item.gear.stone.name=Stone Gear
+commonresources.item.gear.iron.name=Iron Gear
+commonresources.item.gear.gold.name=Gold Gear
+commonresources.item.gear.diamond.name=Diamond Gear

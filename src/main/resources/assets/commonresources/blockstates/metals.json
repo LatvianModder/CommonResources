@@ -1,0 +1,91 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "variant": {
+      "ore_copper": {
+        "textures": {
+          "all": "commonresources:blocks/ores/copper"
+        }
+      },
+      "ore_tin": {
+        "textures": {
+          "all": "commonresources:blocks/ores/tin"
+        }
+      },
+      "ore_silver": {
+        "textures": {
+          "all": "commonresources:blocks/ores/silver"
+        }
+      },
+      "ore_lead": {
+        "textures": {
+          "all": "commonresources:blocks/ores/lead"
+        }
+      },
+      "ore_ruby": {
+        "textures": {
+          "all": "commonresources:blocks/ores/ruby"
+        }
+      },
+      "ore_sapphire": {
+        "textures": {
+          "all": "commonresources:blocks/ores/sapphire"
+        }
+      },
+      "ore_peridot": {
+        "textures": {
+          "all": "commonresources:blocks/ores/peridot"
+        }
+      },
+      "block_steel": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/steel"
+        }
+      },
+      "block_copper": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/copper"
+        }
+      },
+      "block_tin": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/tin"
+        }
+      },
+      "block_silver": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/silver"
+        }
+      },
+      "block_lead": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/lead"
+        }
+      },
+      "block_bronze": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/bronze"
+        }
+      },
+      "block_ruby": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/ruby"
+        }
+      },
+      "block_sapphire": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/sapphire"
+        }
+      },
+      "block_peridot": {
+        "textures": {
+          "all": "commonresources:blocks/blocks/peridot"
+        }
+      }
+    }
+  }
+}
