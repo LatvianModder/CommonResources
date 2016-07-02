@@ -1,0 +1,20 @@
+[
+{
+  "modid": "commonresources",
+  "name": "Common Resources",
+  "description": "",
+  "version": "${version}",
+  "url": "http://minecraft.curseforge.com/projects/common-resources",
+  "updateUrl": "",
+  "authorList": [
+    "LatvianModder"
+  ],
+  "credits": "",
+  "logoFile": "assets/commonresources/textures/logo.png",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
