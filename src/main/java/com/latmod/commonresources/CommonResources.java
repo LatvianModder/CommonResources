@@ -1,15 +1,11 @@
 package com.latmod.commonresources;
 
-import com.latmod.commonresources.block.BlockCR;
-import com.latmod.commonresources.block.CRBlocks;
-import com.latmod.commonresources.item.CRItems;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 
 /**
  * Created by LatvianModder on 02.07.2016.
@@ -25,26 +21,36 @@ public class CommonResources
     @SidedProxy(serverSide = "com.latmod.commonresources.CRCommon", clientSide = "com.latmod.commonresources.CRClient")
     public static CRCommon proxy;
 
-    public static <K extends IForgeRegistryEntry<?>> K register(String s, K obj)
-    {
-        obj.setRegistryName(new ResourceLocation(MOD_ID, s));
-
-        if(obj instanceof BlockCR)
-        {
-            ItemBlock ib = ((BlockCR) obj).createItemBlock();
-            ib.setRegistryName(new ResourceLocation(MOD_ID, s));
-            GameRegistry.register(ib);
-        }
-
-        return GameRegistry.register(obj);
-    }
+    public static BlockMetals metals;
+    public static ItemMaterials materials;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        CRBlocks.init();
-        CRItems.init();
+        metals = new BlockMetals();
+        metals.setRegistryName(MOD_ID, "metals");
+        GameRegistry.register(metals);
+
+        ItemBlock itemBlock = new ItemBlockMetals(metals);
+        itemBlock.setRegistryName(metals.getRegistryName());
+        GameRegistry.register(itemBlock);
+
+        materials = new ItemMaterials();
+        materials.setRegistryName(MOD_ID, "mat");
+        GameRegistry.register(materials);
+
+        metals.init();
+        materials.init();
 
         proxy.preInit();
+    }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        if(CRConfig.enable_crafting)
+        {
+            materials.loadRecipes();
+        }
     }
 }

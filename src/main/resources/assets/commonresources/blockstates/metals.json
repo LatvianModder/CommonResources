@@ -6,22 +6,22 @@
   },
   "variants": {
     "variant": {
-      "ore_copper": {"textures": {"all": "commonresources:blocks/ores/copper"}},
-      "ore_tin": {"textures": {"all": "commonresources:blocks/ores/tin"}},
-      "ore_silver": {"textures": {"all": "commonresources:blocks/ores/silver"}},
-      "ore_lead": {"textures": {"all": "commonresources:blocks/ores/lead"}},
-      "ore_ruby": {"textures": {"all": "commonresources:blocks/ores/ruby"}},
-      "ore_sapphire": {"textures": {"all": "commonresources:blocks/ores/sapphire"}},
-      "ore_peridot": {"textures": {"all": "commonresources:blocks/ores/peridot"}},
-      "block_steel": {"textures": {"all": "commonresources:blocks/blocks/steel"}},
-      "block_copper": {"textures": {"all": "commonresources:blocks/blocks/copper"}},
-      "block_tin": {"textures": {"all": "commonresources:blocks/blocks/tin"}},
-      "block_silver": {"textures": {"all": "commonresources:blocks/blocks/silver"}},
-      "block_lead": {"textures": {"all": "commonresources:blocks/blocks/lead"}},
-      "block_bronze": {"textures": {"all": "commonresources:blocks/blocks/bronze"}},
-      "block_ruby": {"textures": {"all": "commonresources:blocks/blocks/ruby"}},
-      "block_sapphire": {"textures": {"all": "commonresources:blocks/blocks/sapphire"}},
-      "block_peridot": {"textures": {"all": "commonresources:blocks/blocks/peridot"}}
+      "ore_copper": {"textures": {"all": "commonresources:copper/ore"}},
+      "ore_tin": {"textures": {"all": "commonresources:tin/ore"}},
+      "ore_silver": {"textures": {"all": "commonresources:silver/ore"}},
+      "ore_lead": {"textures": {"all": "commonresources:lead/ore"}},
+      "ore_ruby": {"textures": {"all": "commonresources:ruby/ore"}},
+      "ore_sapphire": {"textures": {"all": "commonresources:sapphire/ore"}},
+      "ore_peridot": {"textures": {"all": "commonresources:peridot/ore"}},
+      "block_steel": {"textures": {"all": "commonresources:steel/block"}},
+      "block_copper": {"textures": {"all": "commonresources:copper/block"}},
+      "block_tin": {"textures": {"all": "commonresources:tin/block"}},
+      "block_silver": {"textures": {"all": "commonresources:silver/block"}},
+      "block_lead": {"textures": {"all": "commonresources:lead/block"}},
+      "block_bronze": {"textures": {"all": "commonresources:bronze/block"}},
+      "block_ruby": {"textures": {"all": "commonresources:ruby/block"}},
+      "block_sapphire": {"textures": {"all": "commonresources:sapphire/block"}},
+      "block_peridot": {"textures": {"all": "commonresources:peridot/block"}}
     }
   }
 }

@@ -1,5 +1,6 @@
-package com.latmod.commonresources.block;
+package com.latmod.commonresources;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -8,12 +9,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -21,28 +22,28 @@ import java.util.List;
 /**
  * Created by LatvianModder on 02.07.2016.
  */
-public class BlockMetals extends BlockCR
+public class BlockMetals extends Block
 {
     public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
 
     public enum EnumType implements IStringSerializable
     {
-        ORE_COPPER(0),
-        ORE_TIN(1),
-        ORE_SILVER(2),
-        ORE_LEAD(3),
-        ORE_RUBY(4),
-        ORE_SAPPHIRE(5),
-        ORE_PERIDOT(6),
-        BLOCK_STEEL(7),
-        BLOCK_COPPER(8),
-        BLOCK_TIN(9),
-        BLOCK_SILVER(10),
-        BLOCK_LEAD(11),
-        BLOCK_BRONZE(12),
-        BLOCK_RUBY(13),
-        BLOCK_SAPPHIRE(14),
-        BLOCK_PERIDOT(15);
+        ORE_COPPER(0, "oreCopper"),
+        ORE_TIN(1, "oreTin"),
+        ORE_SILVER(2, "oreSilver"),
+        ORE_LEAD(3, "oreLead"),
+        ORE_RUBY(4, "oreRuby"),
+        ORE_SAPPHIRE(5, "oreSapphire"),
+        ORE_PERIDOT(6, "orePeridot"),
+        BLOCK_STEEL(7, "blockSteel"),
+        BLOCK_COPPER(8, "blockCopper"),
+        BLOCK_TIN(9, "blockTin"),
+        BLOCK_SILVER(10, "blockSilver"),
+        BLOCK_LEAD(11, "blockLead"),
+        BLOCK_BRONZE(12, "blockBronze"),
+        BLOCK_RUBY(13, "blockRuby"),
+        BLOCK_SAPPHIRE(14, "blockSapphire"),
+        BLOCK_PERIDOT(15, "blockPeridot");
 
         public static final EnumType[] VALUES = values();
         public static final EnumType[] META_MAP = new EnumType[16];
@@ -58,12 +59,14 @@ public class BlockMetals extends BlockCR
         public final int meta;
         public final String name;
         public final String uname;
+        public final String oreName;
 
-        EnumType(int m)
+        EnumType(int m, String ore)
         {
             meta = m;
             name = name().toLowerCase();
             uname = "commonresources.tile." + name.replace('_', '.');
+            oreName = ore;
         }
 
         public static EnumType byMetadata(int meta)
@@ -82,6 +85,11 @@ public class BlockMetals extends BlockCR
         {
             return name;
         }
+
+        public ItemStack stack(int q)
+        {
+            return new ItemStack(CommonResources.metals, q, meta);
+        }
     }
 
     public BlockMetals()
@@ -95,24 +103,9 @@ public class BlockMetals extends BlockCR
     }
 
     @Override
-    public ItemBlock createItemBlock()
+    public int damageDropped(IBlockState state)
     {
-        return new ItemBlockCR(this)
-        {
-            @Nonnull
-            @Override
-            public String getUnlocalizedName(ItemStack stack)
-            {
-                EnumType t = EnumType.byMetadata(stack.getMetadata());
-
-                if(t != null)
-                {
-                    return t.uname;
-                }
-
-                return super.getUnlocalizedName(stack);
-            }
-        };
+        return getMetaFromState(state);
     }
 
     @Override
@@ -125,7 +118,14 @@ public class BlockMetals extends BlockCR
         }
     }
 
-    @Override
+    public void init()
+    {
+        for(EnumType t : EnumType.VALUES)
+        {
+            OreDictionary.registerOre(t.oreName, t.stack(1));
+        }
+    }
+
     @SideOnly(Side.CLIENT)
     public void loadModels()
     {
