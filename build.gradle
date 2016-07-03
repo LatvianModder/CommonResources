@@ -19,9 +19,11 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.0.0"
+version = "1.9.4-0.0.1"
 group = "com.latmod.commonresources" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CommonResources"
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
     version = "1.9.4-12.17.0.1987"
