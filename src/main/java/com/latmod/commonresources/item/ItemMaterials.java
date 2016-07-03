@@ -10,6 +10,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,7 @@ import java.util.Map;
  */
 public class ItemMaterials extends ItemCR
 {
-    public class Material
+    public class Material implements Comparable<Material>
     {
         public final int meta;
         public final String id;
@@ -42,6 +44,22 @@ public class ItemMaterials extends ItemCR
         {
             oreName = s;
             return this;
+        }
+
+        public int hashCode()
+        {
+            return meta;
+        }
+
+        public String toString()
+        {
+            return id;
+        }
+
+        @Override
+        public int compareTo(@Nonnull Material o)
+        {
+            return id.compareTo(o.id);
         }
     }
 
@@ -73,7 +91,7 @@ public class ItemMaterials extends ItemCR
 
         addMaterial(40, "ingot_bronze").setOreName("ingotBronze");
         addMaterial(41, "nugget_bronze").setOreName("nuggetBronze");
-        addMaterial(42, "gear_stone").setOreName("gearStone");
+        addMaterial(42, "gear_bronze").setOreName("gearBronze");
 
         addMaterial(50, "ingot_steel").setOreName("ingotSteel");
         addMaterial(51, "nugget_steel").setOreName("nuggetSteel");
@@ -87,9 +105,19 @@ public class ItemMaterials extends ItemCR
         addMaterial(106, "shard_sapphire").setOreName("shardSapphire");
         addMaterial(107, "shard_peridot").setOreName("shardPeridot");
 
-        addMaterial(110, "gear_iron").setOreName("gearIron");
-        addMaterial(111, "gear_gold").setOreName("gearGold");
-        addMaterial(112, "gear_diamond").setOreName("gearDiamond");
+        addMaterial(110, "gear_stone").setOreName("gearStone");
+        addMaterial(111, "gear_iron").setOreName("gearIron");
+        addMaterial(112, "gear_gold").setOreName("gearGold");
+
+        List<Material> list = new ArrayList<>();
+        list.addAll(materials.values());
+        Collections.sort(list, null);
+        materials.clear();
+
+        for(Material m : list)
+        {
+            materials.put(m.meta, m);
+        }
     }
 
     private Material addMaterial(int i, String s)

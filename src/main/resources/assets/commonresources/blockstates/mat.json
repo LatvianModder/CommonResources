@@ -6,141 +6,33 @@
   },
   "variants": {
     "variant": {
-      "ingot_copper": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/copper"
-        }
-      },
-      "nugget_copper": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/copper"
-        }
-      },
-      "gear_copper": {
-        "textures": {
-          "layer0": "commonresources:items/gears/copper"
-        }
-      },
-      "ingot_tin": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/tin"
-        }
-      },
-      "nugget_tin": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/tin"
-        }
-      },
-      "gear_tin": {
-        "textures": {
-          "layer0": "commonresources:items/gears/tin"
-        }
-      },
-      "ingot_silver": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/silver"
-        }
-      },
-      "nugget_silver": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/silver"
-        }
-      },
-      "gear_silver": {
-        "textures": {
-          "layer0": "commonresources:items/gears/silver"
-        }
-      },
-      "ingot_lead": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/lead"
-        }
-      },
-      "nugget_lead": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/lead"
-        }
-      },
-      "gear_lead": {
-        "textures": {
-          "layer0": "commonresources:items/gears/lead"
-        }
-      },
-      "ingot_bronze": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/bronze"
-        }
-      },
-      "nugget_bronze": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/bronze"
-        }
-      },
-      "gear_bronze": {
-        "textures": {
-          "layer0": "commonresources:items/gears/bronze"
-        }
-      },
-      "ingotsteel": {
-        "textures": {
-          "layer0": "commonresources:items/ingots/steel"
-        }
-      },
-      "nugget_steel": {
-        "textures": {
-          "layer0": "commonresources:items/nuggets/steel"
-        }
-      },
-      "gear_steel": {
-        "textures": {
-          "layer0": "commonresources:items/gears/steel"
-        }
-      },
-      "gem_ruby": {
-        "textures": {
-          "layer0": "commonresources:items/gems/ruby"
-        }
-      },
-      "gem_sapphire": {
-        "textures": {
-          "layer0": "commonresources:items/gems/sapphire"
-        }
-      },
-      "gem_peridot": {
-        "textures": {
-          "layer0": "commonresources:items/gems/peridot"
-        }
-      },
-      "shard_ruby": {
-        "textures": {
-          "layer0": "commonresources:items/shards/ruby"
-        }
-      },
-      "shard_sapphire": {
-        "textures": {
-          "layer0": "commonresources:items/shards/sapphire"
-        }
-      },
-      "shard_peridot": {
-        "textures": {
-          "layer0": "commonresources:items/shards/peridot"
-        }
-      },
-      "gear_stone": {
-        "textures": {
-          "layer0": "commonresources:items/gears/stone"
-        }
-      },
-      "gear_iron": {
-        "textures": {
-          "layer0": "commonresources:items/gears/iron"
-        }
-      },
-      "gear_gold": {
-        "textures": {
-          "layer0": "commonresources:items/gears/gold"
-        }
-      }
+      "ingot_copper": {"textures": {"layer0": "commonresources:items/ingots/copper"}},
+      "nugget_copper": {"textures": {"layer0": "commonresources:items/nuggets/copper"}},
+      "gear_copper": {"textures": {"layer0": "commonresources:items/gears/copper"}},
+      "ingot_tin": {"textures": {"layer0": "commonresources:items/ingots/tin"}},
+      "nugget_tin": {"textures": {"layer0": "commonresources:items/nuggets/tin"}},
+      "gear_tin": {"textures": {"layer0": "commonresources:items/gears/tin"}},
+      "ingot_silver": {"textures": {"layer0": "commonresources:items/ingots/silver"}},
+      "nugget_silver": {"textures": {"layer0": "commonresources:items/nuggets/silver"}},
+      "gear_silver": {"textures": {"layer0": "commonresources:items/gears/silver"}},
+      "ingot_lead": {"textures": {"layer0": "commonresources:items/ingots/lead"}},
+      "nugget_lead": {"textures": {"layer0": "commonresources:items/nuggets/lead"}},
+      "gear_lead": {"textures": {"layer0": "commonresources:items/gears/lead"}},
+      "ingot_bronze": {"textures": {"layer0": "commonresources:items/ingots/bronze"}},
+      "nugget_bronze": {"textures": {"layer0": "commonresources:items/nuggets/bronze"}},
+      "gear_bronze": {"textures": {"layer0": "commonresources:items/gears/bronze"}},
+      "ingot_steel": {"textures": {"layer0": "commonresources:items/ingots/steel"}},
+      "nugget_steel": {"textures": {"layer0": "commonresources:items/nuggets/steel"}},
+      "gear_steel": {"textures": {"layer0": "commonresources:items/gears/steel"}},
+      "gem_ruby": {"textures": {"layer0": "commonresources:items/gems/ruby"}},
+      "gem_sapphire": {"textures": {"layer0": "commonresources:items/gems/sapphire"}},
+      "gem_peridot": {"textures": {"layer0": "commonresources:items/gems/peridot"}},
+      "shard_ruby": {"textures": {"layer0": "commonresources:items/gems/ruby_shard"}},
+      "shard_sapphire": {"textures": {"layer0": "commonresources:items/gems/sapphire_shard"}},
+      "shard_peridot": {"textures": {"layer0": "commonresources:items/gems/peridot_shard"}},
+      "gear_stone": {"textures": {"layer0": "commonresources:items/gears/stone"}},
+      "gear_iron": {"textures": {"layer0": "commonresources:items/gears/iron"}},
+      "gear_gold": {"textures": {"layer0": "commonresources:items/gears/gold"}}
     }
   }
 }
