@@ -36,22 +36,22 @@ public class BlockMetals extends Block
 
     public enum EnumType implements IStringSerializable
     {
-        ORE_COPPER(0, "oreCopper"),
-        ORE_TIN(1, "oreTin"),
-        ORE_SILVER(2, "oreSilver"),
-        ORE_LEAD(3, "oreLead"),
-        ORE_RUBY(4, "oreRuby"),
-        ORE_SAPPHIRE(5, "oreSapphire"),
-        ORE_PERIDOT(6, "orePeridot"),
-        BLOCK_STEEL(7, "blockSteel"),
-        BLOCK_COPPER(8, "blockCopper"),
-        BLOCK_TIN(9, "blockTin"),
-        BLOCK_SILVER(10, "blockSilver"),
-        BLOCK_LEAD(11, "blockLead"),
-        BLOCK_BRONZE(12, "blockBronze"),
-        BLOCK_RUBY(13, "blockRuby"),
-        BLOCK_SAPPHIRE(14, "blockSapphire"),
-        BLOCK_PERIDOT(15, "blockPeridot");
+        COPPER_ORE(0, "oreCopper"),
+        COPPER_BLOCK(8, "blockCopper"),
+        TIN_ORE(1, "oreTin"),
+        TIN_BLOCK(9, "blockTin"),
+        SILVER_ORE(2, "oreSilver"),
+        SILVER_BLOCK(10, "blockSilver"),
+        LEAD_ORE(3, "oreLead"),
+        LEAD_BLOCK(11, "blockLead"),
+        RUBY_ORE(4, "oreRuby"),
+        RUBY_BLOCK(13, "blockRuby"),
+        SAPPHIRE_ORE(5, "oreSapphire"),
+        SAPPHIRE_BLOCK(14, "blockSapphire"),
+        PERIDOT_ORE(6, "orePeridot"),
+        PERIDOT_BLOCK(15, "blockPeridot"),
+        BRONZE_BLOCK(12, "blockBronze"),
+        STEEL_BLOCK(7, "blockSteel");
 
         public static final EnumType[] VALUES = values();
         public static final EnumType[] META_MAP = new EnumType[16];
@@ -73,7 +73,7 @@ public class BlockMetals extends Block
         {
             meta = m;
             name = name().toLowerCase();
-            uname = "commonresources.tile." + name.replace('_', '.');
+            uname = "tile." + name.replace('_', '.');
             oreName = ore;
         }
 
@@ -81,7 +81,7 @@ public class BlockMetals extends Block
         {
             if(meta < 0 || meta > 15 || META_MAP[meta] == null)
             {
-                return ORE_COPPER;
+                return COPPER_ORE;
             }
 
             return META_MAP[meta];
@@ -101,14 +101,14 @@ public class BlockMetals extends Block
 
         public boolean isGemOre()
         {
-            return this == ORE_RUBY || this == ORE_SAPPHIRE || this == ORE_PERIDOT;
+            return this == RUBY_ORE || this == SAPPHIRE_ORE || this == PERIDOT_ORE;
         }
     }
 
     public BlockMetals()
     {
         super(Material.ROCK);
-        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumType.ORE_COPPER));
+        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumType.COPPER_ORE));
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setHardness(3F);
         setResistance(5F);
@@ -169,7 +169,17 @@ public class BlockMetals extends Block
     @Nullable
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return state.getValue(VARIANT).isGemOre() ? CommonResources.materials : Item.getItemFromBlock(this);
+        switch(state.getValue(VARIANT))
+        {
+            case RUBY_ORE:
+                return CommonResources.materials.ruby.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
+            case SAPPHIRE_ORE:
+                return CommonResources.materials.sapphire.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
+            case PERIDOT_ORE:
+                return CommonResources.materials.peridot.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
+            default:
+                return Item.getItemFromBlock(this);
+        }
     }
 
     @Override
@@ -221,12 +231,12 @@ public class BlockMetals extends Block
     {
         switch(state.getValue(VARIANT))
         {
-            case ORE_RUBY:
-                return CommonResources.materials.ruby.gem.meta;
-            case ORE_SAPPHIRE:
-                return CommonResources.materials.sapphire.gem.meta;
-            case ORE_PERIDOT:
-                return CommonResources.materials.peridot.gem.meta;
+            case RUBY_ORE:
+                return CommonResources.materials.ruby.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
+            case SAPPHIRE_ORE:
+                return CommonResources.materials.sapphire.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
+            case PERIDOT_ORE:
+                return CommonResources.materials.peridot.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
             default:
                 return getMetaFromState(state);
         }

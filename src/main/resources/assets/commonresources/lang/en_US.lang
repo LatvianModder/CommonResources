@@ -1,66 +1,75 @@
-# Blocks
-commonresources.tile.ore.copper.name=Copper Ore
-commonresources.tile.ore.tin.name=Tin Ore
-commonresources.tile.ore.silver.name=Silver Ore
-commonresources.tile.ore.lead.name=Lead Ore
-commonresources.tile.ore.ruby.name=Ruby Ore
-commonresources.tile.ore.sapphire.name=Sapphire Ore
-commonresources.tile.ore.peridot.name=Peridot Ore
+tile.copper.ore.name=Copper Ore
+tile.copper.block.name=Copper Block
+item.copper.item.name=Copper Ingot
+item.copper.nugget.name=Copper Nugget
+item.copper.dust.name=Copper Dust
+item.copper.gear.name=Copper Gear
 
-commonresources.tile.block.steel.name=Steel Block
-commonresources.tile.block.copper.name=Copper Block
-commonresources.tile.block.tin.name=Tin Block
-commonresources.tile.block.silver.name=Silver Block
-commonresources.tile.block.lead.name=Lead Block
-commonresources.tile.block.bronze.name=Bronze Block
-commonresources.tile.block.ruby.name=Ruby Block
-commonresources.tile.block.sapphire.name=Sapphire Block
-commonresources.tile.block.peridot.name=Peridot Block
+tile.tin.ore.name=Tin Ore
+tile.tin.block.name=Tin Block
+item.tin.item.name=Tin Ingot
+item.tin.nugget.name=Tin Nugget
+item.tin.dust.name=Tin Dust
+item.tin.gear.name=Tin Gear
 
-# Items
-commonresources.item.ingot.copper.name=Copper Ingot
-commonresources.item.ingot.tin.name=Tin Ingot
-commonresources.item.ingot.silver.name=Silver Ingot
-commonresources.item.ingot.lead.name=Lead Ingot
-commonresources.item.ingot.bronze.name=Bronze Ingot
-commonresources.item.ingot.steel.name=Steel Ingot
+tile.silver.ore.name=Silver Ore
+tile.silver.block.name=Silver Block
+item.silver.item.name=Silver Ingot
+item.silver.nugget.name=Silver Nugget
+item.silver.dust.name=Silver Dust
+item.silver.gear.name=Silver Gear
 
-commonresources.item.gem.ruby.name=Ruby
-commonresources.item.gem.sapphire.name=Sapphire
-commonresources.item.gem.peridot.name=Peridot
+tile.lead.ore.name=Lead Ore
+tile.lead.block.name=Lead Block
+item.lead.item.name=Lead Ingot
+item.lead.nugget.name=Lead Nugget
+item.lead.dust.name=Lead Dust
+item.lead.gear.name=Lead Gear
 
-commonresources.item.nugget.copper.name=Copper Nugget
-commonresources.item.nugget.tin.name=Tin Nugget
-commonresources.item.nugget.silver.name=Silver Nugget
-commonresources.item.nugget.lead.name=Lead Nugget
-commonresources.item.nugget.bronze.name=Bronze Nugget
-commonresources.item.nugget.steel.name=Steel Nugget
+tile.bronze.block.name=Bronze Block
+item.bronze.item.name=Bronze Ingot
+item.bronze.nugget.name=Bronze Nugget
+item.bronze.dust.name=Bronze Dust
+item.bronze.gear.name=Bronze Gear
 
-commonresources.item.shard.ruby.name=Ruby Shard
-commonresources.item.shard.sapphire.name=Sapphire Shard
-commonresources.item.shard.peridot.name=Peridot Shard
+tile.steel.block.name=Steel Block
+item.steel.item.name=Steel Ingot
+item.steel.nugget.name=Steel Nugget
+item.steel.dust.name=Steel Dust
+item.steel.gear.name=Steel Gear
 
-commonresources.item.gear.copper.name=Copper Gear
-commonresources.item.gear.tin.name=Tin Gear
-commonresources.item.gear.silver.name=Silver Gear
-commonresources.item.gear.lead.name=Lead Gear
-commonresources.item.gear.bronze.name=Bronze Gear
-commonresources.item.gear.steel.name=Steel Gear
-commonresources.item.gear.stone.name=Stone Gear
-commonresources.item.gear.iron.name=Iron Gear
-commonresources.item.gear.gold.name=Gold Gear
-commonresources.item.gear.diamond.name=Diamond Gear
+tile.ruby.ore.name=Ruby Ore
+tile.ruby.block.name=Ruby Block
+item.ruby.item.name=Ruby
+item.ruby.nugget.name=Ruby Nugget
 
-commonresources.item.dust.copper.name=Copper Dust
-commonresources.item.dust.tin.name=Tin Dust
-commonresources.item.dust.silver.name=Silver Dust
-commonresources.item.dust.lead.name=Lead Dust
-commonresources.item.dust.bronze.name=Bronze Dust
-commonresources.item.dust.steel.name=Steel Dust
-commonresources.item.dust.stone.name=Stone Dust
-commonresources.item.dust.iron.name=Iron Dust
-commonresources.item.dust.gold.name=Gold Dust
-commonresources.item.dust.diamond.name=Diamond Dust
-commonresources.item.dust.lapis.name=Lapis Dust
+tile.sapphire.ore.name=Sapphire Ore
+tile.sapphire.block.name=Sapphire Block
+item.sapphire.item.name=Sapphire
+item.sapphire.nugget.name=Sapphire Nugget
 
-commonresources.item.rod.iron.name=Iron Rod
+tile.peridot.ore.name=Peridot Ore
+tile.peridot.block.name=Peridot Block
+item.peridot.item.name=Peridot
+item.peridot.nugget.name=Peridot Nugget
+
+item.iron.nugget.name=Iron Nugget
+item.iron.dust.name=Iron Dust
+item.iron.gear.name=Iron Gear
+item.iron.rod.name=Iron Rod
+
+item.stone.dust.name=Stone Dust
+item.stone.gear.name=Stone Gear
+item.stone.rod.name=Stone Rod
+
+item.gold.dust.name=Gold Dust
+item.gold.gear.name=Gold Gear
+item.gold.rod.name=Gold Rod
+
+item.diamond.nugget.name=Diamond Nugget
+item.diamond.dust.name=Diamond Dust
+item.diamond.gear.name=Diamond Gear
+item.diamond.rod.name=Diamond Rod
+
+item.lapis.dust.name=Lapis Dust
+item.lapis.nugget.name=Lapis Nugget
