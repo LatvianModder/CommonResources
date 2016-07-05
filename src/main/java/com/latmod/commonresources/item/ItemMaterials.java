@@ -1,5 +1,7 @@
-package com.latmod.commonresources;
+package com.latmod.commonresources.item;
 
+import com.latmod.commonresources.CommonResources;
+import com.latmod.commonresources.block.EnumMetalType;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -26,24 +28,6 @@ import java.util.Map;
  */
 public class ItemMaterials extends Item
 {
-    public enum GroupMatType
-    {
-        ITEM,
-        NUGGET,
-        DUST,
-        GEAR,
-        ROD;
-
-        public final int flag;
-        public final String name;
-
-        GroupMatType()
-        {
-            flag = 1 << ordinal();
-            name = name().toLowerCase();
-        }
-    }
-
     public class Mat implements Comparable<Mat>
     {
         public final String id;
@@ -234,23 +218,23 @@ public class ItemMaterials extends Item
     {
         setMaxDamage(0);
         setHasSubtypes(true);
-        setCreativeTab(CreativeTabs.MATERIALS);
+        setCreativeTab(CommonResources.creativeTab);
 
         materials = new LinkedHashMap<>();
 
-        copper = new NewMetal(0, "copper", "Copper").setOre(BlockMetals.EnumType.COPPER_ORE.stack(1)).setBlock(BlockMetals.EnumType.COPPER_BLOCK.stack(1));
-        tin = new NewMetal(10, "tin", "Tin").setOre(BlockMetals.EnumType.TIN_ORE.stack(1)).setBlock(BlockMetals.EnumType.TIN_BLOCK.stack(1));
-        silver = new NewMetal(20, "silver", "Silver").setOre(BlockMetals.EnumType.SILVER_ORE.stack(1)).setBlock(BlockMetals.EnumType.SILVER_BLOCK.stack(1));
-        lead = new NewMetal(30, "lead", "Lead").setOre(BlockMetals.EnumType.LEAD_ORE.stack(1)).setBlock(BlockMetals.EnumType.LEAD_BLOCK.stack(1));
-        bronze = new NewMetal(40, "bronze", "Bronze").setBlock(BlockMetals.EnumType.BRONZE_BLOCK.stack(1));
-        steel = new NewMetal(50, "steel", "Steel").setBlock(BlockMetals.EnumType.STEEL_BLOCK.stack(1));
+        copper = new NewMetal(0, "copper", "Copper").setOre(EnumMetalType.COPPER.stack(false, 1)).setBlock(EnumMetalType.COPPER.stack(true, 1));
+        tin = new NewMetal(10, "tin", "Tin").setOre(EnumMetalType.TIN.stack(false, 1)).setBlock(EnumMetalType.TIN.stack(true, 1));
+        silver = new NewMetal(20, "silver", "Silver").setOre(EnumMetalType.SILVER.stack(false, 1)).setBlock(EnumMetalType.SILVER.stack(true, 1));
+        lead = new NewMetal(30, "lead", "Lead").setOre(EnumMetalType.LEAD.stack(false, 1)).setBlock(EnumMetalType.LEAD.stack(true, 1));
+        bronze = new NewMetal(40, "bronze", "Bronze").setBlock(EnumMetalType.BRONZE.stack(true, 1));
+        steel = new NewMetal(50, "steel", "Steel").setBlock(EnumMetalType.STEEL.stack(true, 1));
         //nickel
         //platinum
         //invar
 
-        ruby = new NewGem(200, "ruby", "Ruby").setOre(BlockMetals.EnumType.RUBY_ORE.stack(1)).setBlock(BlockMetals.EnumType.RUBY_BLOCK.stack(1));
-        sapphire = new NewGem(210, "sapphire", "Sapphire").setOre(BlockMetals.EnumType.SAPPHIRE_ORE.stack(1)).setBlock(BlockMetals.EnumType.SAPPHIRE_BLOCK.stack(1));
-        peridot = new NewGem(220, "peridot", "Peridot").setOre(BlockMetals.EnumType.PERIDOT_ORE.stack(1)).setBlock(BlockMetals.EnumType.PERIDOT_BLOCK.stack(1));
+        ruby = new NewGem(200, "ruby", "Ruby").setOre(EnumMetalType.RUBY.stack(false, 1)).setBlock(EnumMetalType.RUBY.stack(true, 1));
+        sapphire = new NewGem(210, "sapphire", "Sapphire").setOre(EnumMetalType.SAPPHIRE.stack(false, 1)).setBlock(EnumMetalType.SAPPHIRE.stack(true, 1));
+        peridot = new NewGem(220, "peridot", "Peridot").setOre(EnumMetalType.PERIDOT.stack(false, 1)).setBlock(EnumMetalType.PERIDOT.stack(true, 1));
 
         stone = new GroupMat(350, "stone").add(GroupMatType.ITEM, "stone", new ItemStack(Blocks.STONE)).add(GroupMatType.DUST, "dustStone").add(GroupMatType.GEAR, "gearStone").add(GroupMatType.ROD, "rodStone");
         iron = new GroupMat(360, "iron").add(GroupMatType.ITEM, "ingotIron", new ItemStack(Items.IRON_INGOT)).add(GroupMatType.NUGGET, "nuggetIron").add(GroupMatType.DUST, "dustIron").add(GroupMatType.GEAR, "gearIron").add(GroupMatType.ROD, "rodIron");

@@ -1,5 +1,7 @@
-package com.latmod.commonresources;
+package com.latmod.commonresources.block;
 
+import com.latmod.commonresources.CommonResources;
+import com.latmod.commonresources.item.GroupMatType;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,7 +13,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -28,88 +29,17 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by LatvianModder on 02.07.2016.
+ * Created by LatvianModder on 06.07.2016.
  */
-public class BlockMetals extends Block
+public class BlockOres extends Block
 {
-    public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
+    public static final PropertyEnum<EnumMetalType> VARIANT = PropertyEnum.create("variant", EnumMetalType.class, EnumMetalType.ORES);
 
-    public enum EnumType implements IStringSerializable
-    {
-        COPPER_ORE(0, "oreCopper"),
-        COPPER_BLOCK(8, "blockCopper"),
-        TIN_ORE(1, "oreTin"),
-        TIN_BLOCK(9, "blockTin"),
-        SILVER_ORE(2, "oreSilver"),
-        SILVER_BLOCK(10, "blockSilver"),
-        LEAD_ORE(3, "oreLead"),
-        LEAD_BLOCK(11, "blockLead"),
-        RUBY_ORE(4, "oreRuby"),
-        RUBY_BLOCK(13, "blockRuby"),
-        SAPPHIRE_ORE(5, "oreSapphire"),
-        SAPPHIRE_BLOCK(14, "blockSapphire"),
-        PERIDOT_ORE(6, "orePeridot"),
-        PERIDOT_BLOCK(15, "blockPeridot"),
-        BRONZE_BLOCK(12, "blockBronze"),
-        STEEL_BLOCK(7, "blockSteel");
-
-        public static final EnumType[] VALUES = values();
-        public static final EnumType[] META_MAP = new EnumType[16];
-
-        static
-        {
-            for(EnumType v : VALUES)
-            {
-                META_MAP[v.meta] = v;
-            }
-        }
-
-        public final int meta;
-        public final String name;
-        public final String uname;
-        public final String oreName;
-
-        EnumType(int m, String ore)
-        {
-            meta = m;
-            name = name().toLowerCase();
-            uname = "tile." + name.replace('_', '.');
-            oreName = ore;
-        }
-
-        public static EnumType byMetadata(int meta)
-        {
-            if(meta < 0 || meta > 15 || META_MAP[meta] == null)
-            {
-                return COPPER_ORE;
-            }
-
-            return META_MAP[meta];
-        }
-
-        @Nonnull
-        @Override
-        public String getName()
-        {
-            return name;
-        }
-
-        public ItemStack stack(int q)
-        {
-            return new ItemStack(CommonResources.metals, q, meta);
-        }
-
-        public boolean isGemOre()
-        {
-            return this == RUBY_ORE || this == SAPPHIRE_ORE || this == PERIDOT_ORE;
-        }
-    }
-
-    public BlockMetals()
+    public BlockOres()
     {
         super(Material.ROCK);
-        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumType.COPPER_ORE));
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumMetalType.COPPER));
+        setCreativeTab(CommonResources.creativeTab);
         setHardness(3F);
         setResistance(5F);
         setSoundType(SoundType.STONE);
@@ -119,7 +49,7 @@ public class BlockMetals extends Block
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
-        for(EnumType t : EnumType.VALUES)
+        for(EnumMetalType t : EnumMetalType.ORES)
         {
             list.add(new ItemStack(itemIn, 1, t.meta));
         }
@@ -127,9 +57,9 @@ public class BlockMetals extends Block
 
     public void init()
     {
-        for(EnumType t : EnumType.VALUES)
+        for(EnumMetalType t : EnumMetalType.ORES)
         {
-            OreDictionary.registerOre(t.oreName, t.stack(1));
+            OreDictionary.registerOre("ore" + t.oreName, t.stack(false, 1));
         }
     }
 
@@ -138,7 +68,7 @@ public class BlockMetals extends Block
     {
         Item item = Item.getItemFromBlock(this);
 
-        for(EnumType t : EnumType.VALUES)
+        for(EnumMetalType t : EnumMetalType.ORES)
         {
             ModelLoader.setCustomModelResourceLocation(item, t.meta, new ModelResourceLocation(getRegistryName(), "variant=" + t.getName()));
         }
@@ -149,7 +79,7 @@ public class BlockMetals extends Block
     @Deprecated
     public IBlockState getStateFromMeta(int meta)
     {
-        return getDefaultState().withProperty(VARIANT, EnumType.byMetadata(meta));
+        return getDefaultState().withProperty(VARIANT, EnumMetalType.byMetadata(meta));
     }
 
     @Override
@@ -171,12 +101,12 @@ public class BlockMetals extends Block
     {
         switch(state.getValue(VARIANT))
         {
-            case RUBY_ORE:
-                return CommonResources.materials.ruby.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
-            case SAPPHIRE_ORE:
-                return CommonResources.materials.sapphire.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
-            case PERIDOT_ORE:
-                return CommonResources.materials.peridot.map.get(ItemMaterials.GroupMatType.ITEM).getItem();
+            case RUBY:
+                return CommonResources.materials.ruby.map.get(GroupMatType.ITEM).getItem();
+            case SAPPHIRE:
+                return CommonResources.materials.sapphire.map.get(GroupMatType.ITEM).getItem();
+            case PERIDOT:
+                return CommonResources.materials.peridot.map.get(GroupMatType.ITEM).getItem();
             default:
                 return Item.getItemFromBlock(this);
         }
@@ -185,7 +115,7 @@ public class BlockMetals extends Block
     @Override
     public int quantityDropped(IBlockState state, int fortune, @Nonnull Random random)
     {
-        return state.getValue(VARIANT).isGemOre() ? (1 + random.nextInt(2)) : 1;
+        return state.getValue(VARIANT).isGem() ? (1 + random.nextInt(2)) : 1;
     }
 
     @Override
@@ -211,7 +141,7 @@ public class BlockMetals extends Block
     @Override
     public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune)
     {
-        if(state.getValue(VARIANT).isGemOre())
+        if(state.getValue(VARIANT).isGem())
         {
             return MathHelper.getRandomIntegerInRange(world instanceof World ? ((World) world).rand : new Random(), 2, 5);
         }
@@ -231,12 +161,12 @@ public class BlockMetals extends Block
     {
         switch(state.getValue(VARIANT))
         {
-            case RUBY_ORE:
-                return CommonResources.materials.ruby.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
-            case SAPPHIRE_ORE:
-                return CommonResources.materials.sapphire.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
-            case PERIDOT_ORE:
-                return CommonResources.materials.peridot.map.get(ItemMaterials.GroupMatType.ITEM).getMeta();
+            case RUBY:
+                return CommonResources.materials.ruby.map.get(GroupMatType.ITEM).getMeta();
+            case SAPPHIRE:
+                return CommonResources.materials.sapphire.map.get(GroupMatType.ITEM).getMeta();
+            case PERIDOT:
+                return CommonResources.materials.peridot.map.get(GroupMatType.ITEM).getMeta();
             default:
                 return getMetaFromState(state);
         }
