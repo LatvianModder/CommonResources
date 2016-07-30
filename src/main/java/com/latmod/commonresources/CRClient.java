@@ -12,8 +12,9 @@ public class CRClient extends CRCommon
     @Override
     public void preInit()
     {
-        CommonResources.ores.loadModels();
-        CommonResources.blocks.loadModels();
-        CommonResources.materials.loadModels();
+        CRItems.ORES.loadModels();
+        CRItems.BLOCKS.loadModels();
+        CRItems.MATERIALS.loadModels();
+        CRItems.HAMMER.loadModels();
     }
 }

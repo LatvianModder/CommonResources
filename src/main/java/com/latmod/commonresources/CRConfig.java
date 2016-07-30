@@ -8,6 +8,7 @@ import java.io.File;
 public class CRConfig
 {
     public static boolean enable_crafting = true;
+    public static int hammer_max_uses = 256;
 
     public static void load(File file)
     {

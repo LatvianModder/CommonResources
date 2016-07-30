@@ -1,21 +1,21 @@
 package com.latmod.commonresources.item;
 
+import com.latmod.commonresources.CRItems;
 import com.latmod.commonresources.CommonResources;
 import com.latmod.commonresources.block.EnumMetalType;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import javax.annotation.Nonnull;
 import java.util.EnumMap;
@@ -144,8 +144,8 @@ public class ItemMaterials extends Item
                 if(map.containsKey(GroupMatType.NUGGET))
                 {
                     Mat nugget = map.get(GroupMatType.NUGGET);
-                    addRecipe(item.stack(1), "SSS", "SSS", "SSS", 'S', nugget.oreName);
-                    addShapelessRecipe(nugget.stack(9), item.oreName);
+                    CRItems.addRecipe(item.stack(1), "SSS", "SSS", "SSS", 'S', nugget.oreName);
+                    CRItems.addShapelessRecipe(nugget.stack(9), item.oreName);
                 }
 
                 if(map.containsKey(GroupMatType.DUST))
@@ -157,28 +157,28 @@ public class ItemMaterials extends Item
                 {
                     if(this == stone)
                     {
-                        addRecipe(map.get(GroupMatType.GEAR).stack(1), " S ", "SBS", " S ", 'S', "stickWood", 'B', "cobblestone");
+                        CRItems.addRecipe(map.get(GroupMatType.GEAR).stack(1), " S ", "SBS", " S ", 'S', "stickWood", 'B', "cobblestone");
                     }
                     else
                     {
-                        addRecipe(map.get(GroupMatType.GEAR).stack(1), " I ", "IGI", " I ", 'I', item.oreName, 'G', "gearStone");
+                        CRItems.addRecipe(map.get(GroupMatType.GEAR).stack(1), " I ", "IGI", " I ", 'I', item.oreName, 'G', "gearStone");
                     }
                 }
 
-                if(oreBlock != null)
+                if(oreBlock != null && oreBlock.getItem() != null)
                 {
                     GameRegistry.addSmelting(oreBlock, item.stack(1), 1F);
                 }
 
                 if(block != null)
                 {
-                    addRecipe(block, "SSS", "SSS", "SSS", 'S', item.stack(1));
-                    addShapelessRecipe(item.stack(9), block);
+                    CRItems.addRecipe(block, "SSS", "SSS", "SSS", 'S', item.stack(1));
+                    CRItems.addShapelessRecipe(item.stack(9), block);
                 }
 
                 if(map.containsKey(GroupMatType.ROD))
                 {
-                    addRecipe(map.get(GroupMatType.ROD).stack(4), "I", "I", 'I', item.oreName);
+                    CRItems.addRecipe(map.get(GroupMatType.ROD).stack(4), "I", "I", 'I', item.oreName);
                 }
             }
         }
@@ -213,6 +213,7 @@ public class ItemMaterials extends Item
     public final GroupMat copper, tin, silver, lead, bronze, steel;
     public final GroupMat ruby, sapphire, peridot;
     public final GroupMat stone, iron, gold, diamond, lapis;
+    public final Mat dye_blue, silicon;
 
     public ItemMaterials()
     {
@@ -241,16 +242,9 @@ public class ItemMaterials extends Item
         gold = new GroupMat(370, "gold").add(GroupMatType.ITEM, "ingotGold", new ItemStack(Items.GOLD_INGOT)).add(GroupMatType.DUST, "dustGold").add(GroupMatType.GEAR, "gearGold").add(GroupMatType.ROD, "rodGold");
         diamond = new GroupMat(380, "diamond").add(GroupMatType.ITEM, "gemDiamond", new ItemStack(Items.DIAMOND)).add(GroupMatType.NUGGET, "nuggetDiamond").add(GroupMatType.DUST, "dustDiamond").add(GroupMatType.GEAR, "gearDiamond").add(GroupMatType.ROD, "rodDiamond");
         lapis = new GroupMat(390, "lapis").add(GroupMatType.ITEM, "gemLapis", new ItemStack(Items.DYE, 1, 4)).add(GroupMatType.NUGGET, "shardLapis").add(GroupMatType.DUST, "dustLapis");
-    }
 
-    public static void addRecipe(ItemStack out, Object... o)
-    {
-        CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(out, o));
-    }
-
-    public static void addShapelessRecipe(ItemStack out, Object... o)
-    {
-        CraftingManager.getInstance().getRecipeList().add(new ShapelessOreRecipe(out, o));
+        dye_blue = addMaterial(new Mat(1200, "dye_blue", "dyeBlue"));
+        silicon = addMaterial(new Mat(1210, "silicon", "itemSilicon"));
     }
 
     private Mat addMaterial(Mat m)
@@ -268,6 +262,8 @@ public class ItemMaterials extends Item
                 OreDictionary.registerOre(m.oreName, new ItemStack(this, 1, m.meta));
             }
         }
+
+        OreDictionary.registerOre("dye", dye_blue.stack(1));
     }
 
     public void loadRecipes()
@@ -288,6 +284,9 @@ public class ItemMaterials extends Item
         gold.loadRecipes();
         diamond.loadRecipes();
         lapis.loadRecipes();
+
+        CRItems.addShapelessRecipe(dye_blue.stack(2), "dyeLightBlue", "dyeBlack");
+        CRItems.addRecipe(new ItemStack(Items.DYE, 4, EnumDyeColor.GREEN.getDyeDamage()), "GGG", "GWG", "GGG", 'G', Blocks.TALLGRASS, 'W', Items.WATER_BUCKET);
     }
 
     @SideOnly(Side.CLIENT)
@@ -295,7 +294,14 @@ public class ItemMaterials extends Item
     {
         for(Mat m : materials.values())
         {
-            ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(getRegistryName(), "variant=" + m.id));
+            if(m == dye_blue || m == silicon)
+            {
+                ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, m.id), "inventory"));
+            }
+            else
+            {
+                ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(getRegistryName(), "variant=" + m.id));
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.latmod.commonresources.block;
 
+import com.latmod.commonresources.CRItems;
 import com.latmod.commonresources.CommonResources;
 import com.latmod.commonresources.item.GroupMatType;
 import net.minecraft.block.Block;
@@ -102,11 +103,11 @@ public class BlockOres extends Block
         switch(state.getValue(VARIANT))
         {
             case RUBY:
-                return CommonResources.materials.ruby.map.get(GroupMatType.ITEM).getItem();
+                return CRItems.MATERIALS.ruby.map.get(GroupMatType.ITEM).getItem();
             case SAPPHIRE:
-                return CommonResources.materials.sapphire.map.get(GroupMatType.ITEM).getItem();
+                return CRItems.MATERIALS.sapphire.map.get(GroupMatType.ITEM).getItem();
             case PERIDOT:
-                return CommonResources.materials.peridot.map.get(GroupMatType.ITEM).getItem();
+                return CRItems.MATERIALS.peridot.map.get(GroupMatType.ITEM).getItem();
             default:
                 return Item.getItemFromBlock(this);
         }
@@ -162,11 +163,11 @@ public class BlockOres extends Block
         switch(state.getValue(VARIANT))
         {
             case RUBY:
-                return CommonResources.materials.ruby.map.get(GroupMatType.ITEM).getMeta();
+                return CRItems.MATERIALS.ruby.map.get(GroupMatType.ITEM).getMeta();
             case SAPPHIRE:
-                return CommonResources.materials.sapphire.map.get(GroupMatType.ITEM).getMeta();
+                return CRItems.MATERIALS.sapphire.map.get(GroupMatType.ITEM).getMeta();
             case PERIDOT:
-                return CommonResources.materials.peridot.map.get(GroupMatType.ITEM).getMeta();
+                return CRItems.MATERIALS.peridot.map.get(GroupMatType.ITEM).getMeta();
             default:
                 return getMetaFromState(state);
         }

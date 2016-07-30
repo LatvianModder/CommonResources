@@ -1,5 +1,9 @@
 itemGroup.commonresources=Common Resources Mod
 
+item.commonresources.hammer.name=CR Hammer
+item.dye.blue.name=Blue Dye
+item.silicon.name=Silicon
+
 tile.copper.ore.name=Copper Ore
 tile.copper.block.name=Copper Block
 item.copper.item.name=Copper Ingot
