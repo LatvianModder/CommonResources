@@ -1,21 +1,20 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "minecraft:cube_all",
     "transform": "forge:default-block"
   },
   "variants": {
     "inventory": [{}],
     "variant": {
-      "copper": {"textures": {"all": "commonresources:copper/block"}},
-      "tin": {"textures": {"all": "commonresources:tin/block"}},
-      "silver": {"textures": {"all": "commonresources:silver/block"}},
-      "lead": {"textures": {"all": "commonresources:lead/block"}},
-      "bronze": {"textures": {"all": "commonresources:bronze/block"}},
-      "steel": {"textures": {"all": "commonresources:steel/block"}},
-      "nickel": {"textures": {"all": "commonresources:nickel/block"}},
-      "platinum": {"textures": {"all": "commonresources:platinum/block"}},
-      "invar": {"textures": {"all": "commonresources:invar/block"}}
+      "copper": {"model": "commonresources:copper_block"},
+      "tin": {"model": "commonresources:tin_block"},
+      "silver": {"model": "commonresources:silver_block"},
+      "lead": {"model": "commonresources:lead_block"},
+      "bronze": {"model": "commonresources:bronze_block"},
+      "steel": {"model": "commonresources:steel_block"},
+      "nickel": {"model": "commonresources:nickel_block"},
+      "platinum": {"model": "commonresources:platinum_block"},
+      "invar": {"model": "commonresources:invar_block"}
     }
   }
 }
