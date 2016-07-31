@@ -1,9 +1,9 @@
 package com.latmod.commonresources.block;
 
-import com.latmod.commonresources.CRItems;
+import com.latmod.commonresources.CRCommon;
 import com.latmod.commonresources.CommonResources;
 import com.latmod.commonresources.item.GroupMatType;
-import net.minecraft.block.Block;
+import com.latmod.commonresources.item.ItemMaterials;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,7 +13,9 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -32,15 +34,14 @@ import java.util.Random;
 /**
  * Created by LatvianModder on 06.07.2016.
  */
-public class BlockOres extends Block
+public class BlockGemOres extends BlockCR
 {
-    public static final PropertyEnum<EnumMetalType> VARIANT = PropertyEnum.create("variant", EnumMetalType.class, EnumMetalType.ORES);
+    public static final PropertyEnum<EnumGemType> VARIANT = PropertyEnum.create("variant", EnumGemType.class, EnumGemType.ORES);
 
-    public BlockOres()
+    public BlockGemOres()
     {
         super(Material.ROCK);
-        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumMetalType.COPPER));
-        setCreativeTab(CommonResources.creativeTab);
+        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumGemType.RUBY));
         setHardness(3F);
         setResistance(5F);
         setSoundType(SoundType.STONE);
@@ -50,7 +51,7 @@ public class BlockOres extends Block
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
-        for(EnumMetalType t : EnumMetalType.ORES)
+        for(EnumGemType t : EnumGemType.ORES)
         {
             list.add(new ItemStack(itemIn, 1, t.meta));
         }
@@ -58,7 +59,7 @@ public class BlockOres extends Block
 
     public void init()
     {
-        for(EnumMetalType t : EnumMetalType.ORES)
+        for(EnumGemType t : EnumGemType.ORES)
         {
             OreDictionary.registerOre("ore" + t.oreName, t.stack(false, 1));
         }
@@ -69,9 +70,9 @@ public class BlockOres extends Block
     {
         Item item = Item.getItemFromBlock(this);
 
-        for(EnumMetalType t : EnumMetalType.ORES)
+        for(EnumGemType t : EnumGemType.ORES)
         {
-            ModelLoader.setCustomModelResourceLocation(item, t.meta, new ModelResourceLocation(getRegistryName(), "variant=" + t.getName()));
+            ModelLoader.setCustomModelResourceLocation(item, t.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, t.name + "_ore"), "inventory"));
         }
     }
 
@@ -80,7 +81,7 @@ public class BlockOres extends Block
     @Deprecated
     public IBlockState getStateFromMeta(int meta)
     {
-        return getDefaultState().withProperty(VARIANT, EnumMetalType.byMetadata(meta));
+        return getDefaultState().withProperty(VARIANT, EnumGemType.byMetadata(meta));
     }
 
     @Override
@@ -100,29 +101,27 @@ public class BlockOres extends Block
     @Nullable
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        switch(state.getValue(VARIANT))
-        {
-            case RUBY:
-                return CRItems.MATERIALS.ruby.map.get(GroupMatType.ITEM).getItem();
-            case SAPPHIRE:
-                return CRItems.MATERIALS.sapphire.map.get(GroupMatType.ITEM).getItem();
-            case PERIDOT:
-                return CRItems.MATERIALS.peridot.map.get(GroupMatType.ITEM).getItem();
-            default:
-                return Item.getItemFromBlock(this);
-        }
+        ItemMaterials.NewGem gem = CRCommon.MATERIALS.new_gems.get(state.getValue(VARIANT));
+        return (gem == null) ? Item.getItemFromBlock(this) : gem.map.get(GroupMatType.ITEM).getItem();
+    }
+
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        ItemMaterials.NewGem gem = CRCommon.MATERIALS.new_gems.get(state.getValue(VARIANT));
+        return (gem == null) ? getMetaFromState(state) : gem.map.get(GroupMatType.ITEM).getMeta();
     }
 
     @Override
     public int quantityDropped(IBlockState state, int fortune, @Nonnull Random random)
     {
-        return state.getValue(VARIANT).isGem() ? (1 + random.nextInt(2)) : 1;
+        return 1 + random.nextInt(2);
     }
 
     @Override
     public int quantityDroppedWithBonus(int fortune, @Nonnull Random random)
     {
-        if(fortune > 0 && Item.getItemFromBlock(this) != this.getItemDropped(this.getBlockState().getValidStates().iterator().next(), random, fortune))
+        if(fortune > 0 && Item.getItemFromBlock(this) != getItemDropped(getBlockState().getValidStates().iterator().next(), random, fortune))
         {
             int i = random.nextInt(fortune + 2) - 1;
 
@@ -131,23 +130,18 @@ public class BlockOres extends Block
                 i = 0;
             }
 
-            return this.quantityDropped(random) * (i + 1);
+            return quantityDropped(random) * (i + 1);
         }
         else
         {
-            return this.quantityDropped(random);
+            return quantityDropped(random);
         }
     }
 
     @Override
     public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune)
     {
-        if(state.getValue(VARIANT).isGem())
-        {
-            return MathHelper.getRandomIntegerInRange(world instanceof World ? ((World) world).rand : new Random(), 2, 5);
-        }
-
-        return 0;
+        return MathHelper.getRandomIntegerInRange(world instanceof World ? ((World) world).rand : new Random(), 2, 5);
     }
 
     @Nonnull
@@ -158,18 +152,23 @@ public class BlockOres extends Block
     }
 
     @Override
-    public int damageDropped(IBlockState state)
+    public ItemBlock createItemBlock()
     {
-        switch(state.getValue(VARIANT))
+        return new ItemBlockCR(this)
         {
-            case RUBY:
-                return CRItems.MATERIALS.ruby.map.get(GroupMatType.ITEM).getMeta();
-            case SAPPHIRE:
-                return CRItems.MATERIALS.sapphire.map.get(GroupMatType.ITEM).getMeta();
-            case PERIDOT:
-                return CRItems.MATERIALS.peridot.map.get(GroupMatType.ITEM).getMeta();
-            default:
-                return getMetaFromState(state);
-        }
+            @Nonnull
+            @Override
+            public String getUnlocalizedName(ItemStack stack)
+            {
+                EnumGemType t = EnumGemType.byMetadata(stack.getMetadata());
+
+                if(t != null)
+                {
+                    return "tile." + t.name + ".ore";
+                }
+
+                return super.getUnlocalizedName(stack);
+            }
+        };
     }
 }

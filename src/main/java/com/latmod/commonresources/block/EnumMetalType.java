@@ -1,6 +1,6 @@
 package com.latmod.commonresources.block;
 
-import com.latmod.commonresources.CRItems;
+import com.latmod.commonresources.CRCommon;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
@@ -17,14 +17,11 @@ public enum EnumMetalType implements IStringSerializable
     TIN(1, "Tin", true),
     SILVER(2, "Silver", true),
     LEAD(3, "Lead", true),
-    RUBY(4, "Ruby", true),
-    SAPPHIRE(5, "Sapphire", true),
-    PERIDOT(6, "Peridot", true),
-    BRONZE(7, "Bronze", false),
-    STEEL(8, "Steel", false),
-    NICKEL(9, "Nickel", true),
-    PLATINUM(10, "Platinum", true),
-    INVAR(11, "Invar", false);
+    BRONZE(4, "Bronze", false),
+    STEEL(5, "Steel", false),
+    NICKEL(6, "Nickel", true),
+    PLATINUM(7, "Platinum", true),
+    INVAR(8, "Invar", false);
 
     public static final EnumMetalType[] BLOCKS = values();
     public static final EnumMetalType[] ORES;
@@ -75,13 +72,8 @@ public enum EnumMetalType implements IStringSerializable
         return name;
     }
 
-    public boolean isGem()
-    {
-        return this == RUBY || this == SAPPHIRE || this == PERIDOT;
-    }
-
     public ItemStack stack(boolean block, int q)
     {
-        return new ItemStack(block ? CRItems.BLOCKS : CRItems.ORES, q, meta);
+        return new ItemStack(block ? CRCommon.METAL_BLOCKS : CRCommon.METAL_ORES, q, meta);
     }
 }

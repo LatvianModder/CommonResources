@@ -1,6 +1,1 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "commonresources:items/dye_blue"
-  }
-}
+{"parent": "item/generated", "textures": {"layer0": "commonresources:items/dye_blue"}}

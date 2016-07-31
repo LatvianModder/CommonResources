@@ -44,6 +44,26 @@ item.steel.nugget.name=Steel Nugget
 item.steel.dust.name=Steel Dust
 item.steel.gear.name=Steel Gear
 
+tile.nickel.ore.name=Nickel Ore
+tile.nickel.block.name=Nickel Block
+item.nickel.item.name=Nickel Ingot
+item.nickel.nugget.name=Nickel Nugget
+item.nickel.dust.name=Nickel Dust
+item.nickel.gear.name=Nickel Gear
+
+tile.platinum.ore.name=Platinum Ore
+tile.platinum.block.name=Platinum Block
+item.platinum.item.name=Platinum Ingot
+item.platinum.nugget.name=Platinum Nugget
+item.platinum.dust.name=Platinum Dust
+item.platinum.gear.name=Platinum Gear
+
+tile.invar.block.name=Invar Block
+item.invar.item.name=Invar Ingot
+item.invar.nugget.name=Invar Nugget
+item.invar.dust.name=Invar Dust
+item.invar.gear.name=Invar Gear
+
 tile.ruby.ore.name=Ruby Ore
 tile.ruby.block.name=Ruby Block
 item.ruby.item.name=Ruby

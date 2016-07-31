@@ -10,11 +10,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class CRClient extends CRCommon
 {
     @Override
-    public void preInit()
+    public void initItems()
     {
-        CRItems.ORES.loadModels();
-        CRItems.BLOCKS.loadModels();
-        CRItems.MATERIALS.loadModels();
-        CRItems.HAMMER.loadModels();
+        super.initItems();
+
+        METAL_ORES.loadModels();
+        METAL_BLOCKS.loadModels();
+        GEM_ORES.loadModels();
+        GEM_BLOCKS.loadModels();
+        MATERIALS.loadModels();
+        HAMMER.loadModels();
     }
 }

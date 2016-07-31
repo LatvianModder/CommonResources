@@ -1,6 +1,1 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "commonresources:items/hammer"
-  }
-}
+{"parent": "item/handheld", "textures": {"layer0": "commonresources:items/hammer"}}

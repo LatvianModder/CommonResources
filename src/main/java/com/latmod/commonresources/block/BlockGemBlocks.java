@@ -1,7 +1,6 @@
 package com.latmod.commonresources.block;
 
 import com.latmod.commonresources.CommonResources;
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
@@ -10,7 +9,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,15 +23,14 @@ import java.util.List;
 /**
  * Created by LatvianModder on 02.07.2016.
  */
-public class BlockBlocks extends Block
+public class BlockGemBlocks extends BlockCR
 {
-    public static final PropertyEnum<EnumMetalType> VARIANT = PropertyEnum.create("variant", EnumMetalType.class, EnumMetalType.BLOCKS);
+    public static final PropertyEnum<EnumGemType> VARIANT = PropertyEnum.create("variant", EnumGemType.class, EnumGemType.BLOCKS);
 
-    public BlockBlocks()
+    public BlockGemBlocks()
     {
         super(Material.IRON);
-        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumMetalType.COPPER));
-        setCreativeTab(CommonResources.creativeTab);
+        setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumGemType.RUBY));
         setHardness(5F);
         setResistance(10F);
         setSoundType(SoundType.METAL);
@@ -40,7 +40,7 @@ public class BlockBlocks extends Block
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
-        for(EnumMetalType t : EnumMetalType.BLOCKS)
+        for(EnumGemType t : EnumGemType.BLOCKS)
         {
             list.add(new ItemStack(itemIn, 1, t.meta));
         }
@@ -48,7 +48,7 @@ public class BlockBlocks extends Block
 
     public void init()
     {
-        for(EnumMetalType t : EnumMetalType.BLOCKS)
+        for(EnumGemType t : EnumGemType.BLOCKS)
         {
             OreDictionary.registerOre("block" + t.oreName, t.stack(true, 1));
         }
@@ -59,9 +59,9 @@ public class BlockBlocks extends Block
     {
         Item item = Item.getItemFromBlock(this);
 
-        for(EnumMetalType t : EnumMetalType.BLOCKS)
+        for(EnumGemType t : EnumGemType.BLOCKS)
         {
-            ModelLoader.setCustomModelResourceLocation(item, t.meta, new ModelResourceLocation(getRegistryName(), "variant=" + t.getName()));
+            ModelLoader.setCustomModelResourceLocation(item, t.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, t.name + "_block"), "inventory"));
         }
     }
 
@@ -70,7 +70,7 @@ public class BlockBlocks extends Block
     @Deprecated
     public IBlockState getStateFromMeta(int meta)
     {
-        return getDefaultState().withProperty(VARIANT, EnumMetalType.byMetadata(meta));
+        return getDefaultState().withProperty(VARIANT, EnumGemType.byMetadata(meta));
     }
 
     @Override
@@ -84,5 +84,26 @@ public class BlockBlocks extends Block
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, VARIANT);
+    }
+
+    @Override
+    public ItemBlock createItemBlock()
+    {
+        return new ItemBlockCR(this)
+        {
+            @Nonnull
+            @Override
+            public String getUnlocalizedName(ItemStack stack)
+            {
+                EnumGemType t = EnumGemType.byMetadata(stack.getMetadata());
+
+                if(t != null)
+                {
+                    return "tile." + t.name + ".block";
+                }
+
+                return super.getUnlocalizedName(stack);
+            }
+        };
     }
 }

@@ -1,7 +1,7 @@
 package com.latmod.commonresources.item;
 
+import com.latmod.commonresources.CRCommon;
 import com.latmod.commonresources.CRConfig;
-import com.latmod.commonresources.CRItems;
 import com.latmod.commonresources.CommonResources;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
@@ -39,7 +39,7 @@ public class ItemHammer extends Item
             return;
         }
 
-        CRItems.addRecipe(new ItemStack(this, 1, 0),
+        CRCommon.addRecipe(new ItemStack(this, 1, 0),
                 "OBO", " I ", " I ",
                 'O', "obsidian",
                 'B', "blockIron",
@@ -47,9 +47,9 @@ public class ItemHammer extends Item
 
         ItemStack hammerItem = new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
 
-        CRItems.addShapelessRecipe(new ItemStack(Blocks.GRAVEL), hammerItem, Blocks.COBBLESTONE);
-        CRItems.addShapelessRecipe(new ItemStack(Blocks.SAND), hammerItem, Blocks.GRAVEL);
-        CRItems.addShapelessRecipe(CRItems.MATERIALS.silicon.stack(1), hammerItem, "sand");
+        CRCommon.addShapelessRecipe(new ItemStack(Blocks.GRAVEL), hammerItem, Blocks.COBBLESTONE);
+        CRCommon.addShapelessRecipe(new ItemStack(Blocks.SAND), hammerItem, Blocks.GRAVEL);
+        CRCommon.addShapelessRecipe(CRCommon.MATERIALS.silicon.stack(1), hammerItem, "sand");
 
         Map<String, ItemStack> overrides = new HashMap<>();
         overrides.put("oreCoal", new ItemStack(Items.COAL, 2, 0));
@@ -60,7 +60,7 @@ public class ItemHammer extends Item
 
         for(Map.Entry<String, ItemStack> entry : overrides.entrySet())
         {
-            CRItems.addShapelessRecipe(entry.getValue(), hammerItem, entry.getKey());
+            CRCommon.addShapelessRecipe(entry.getValue(), hammerItem, entry.getKey());
         }
 
         List<String> list = Arrays.asList(OreDictionary.getOreNames());
@@ -77,7 +77,7 @@ public class ItemHammer extends Item
                     {
                         ItemStack is1 = is.copy();
                         is1.stackSize = 1;
-                        CRItems.addShapelessRecipe(is1, hammerItem, s);
+                        CRCommon.addShapelessRecipe(is1, hammerItem, s);
                     }
                 }
                 else if(s.startsWith("ore"))
@@ -88,7 +88,7 @@ public class ItemHammer extends Item
                     {
                         ItemStack is1 = is.copy();
                         is1.stackSize = 2;
-                        CRItems.addShapelessRecipe(is1, hammerItem, s);
+                        CRCommon.addShapelessRecipe(is1, hammerItem, s);
                     }
                 }
             }

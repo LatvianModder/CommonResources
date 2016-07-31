@@ -1,7 +1,8 @@
 package com.latmod.commonresources.item;
 
-import com.latmod.commonresources.CRItems;
+import com.latmod.commonresources.CRCommon;
 import com.latmod.commonresources.CommonResources;
+import com.latmod.commonresources.block.EnumGemType;
 import com.latmod.commonresources.block.EnumMetalType;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -144,8 +145,8 @@ public class ItemMaterials extends Item
                 if(map.containsKey(GroupMatType.NUGGET))
                 {
                     Mat nugget = map.get(GroupMatType.NUGGET);
-                    CRItems.addRecipe(item.stack(1), "SSS", "SSS", "SSS", 'S', nugget.oreName);
-                    CRItems.addShapelessRecipe(nugget.stack(9), item.oreName);
+                    CRCommon.addRecipe(item.stack(1), "SSS", "SSS", "SSS", 'S', nugget.oreName);
+                    CRCommon.addShapelessRecipe(nugget.stack(9), item.oreName);
                 }
 
                 if(map.containsKey(GroupMatType.DUST))
@@ -157,28 +158,28 @@ public class ItemMaterials extends Item
                 {
                     if(this == stone)
                     {
-                        CRItems.addRecipe(map.get(GroupMatType.GEAR).stack(1), " S ", "SBS", " S ", 'S', "stickWood", 'B', "cobblestone");
+                        CRCommon.addRecipe(map.get(GroupMatType.GEAR).stack(1), " S ", "SBS", " S ", 'S', "stickWood", 'B', "cobblestone");
                     }
                     else
                     {
-                        CRItems.addRecipe(map.get(GroupMatType.GEAR).stack(1), " I ", "IGI", " I ", 'I', item.oreName, 'G', "gearStone");
+                        CRCommon.addRecipe(map.get(GroupMatType.GEAR).stack(1), " I ", "IGI", " I ", 'I', item.oreName, 'G', "gearStone");
                     }
                 }
 
-                if(oreBlock != null && oreBlock.getItem() != null)
+                if(oreBlock != null)
                 {
                     GameRegistry.addSmelting(oreBlock, item.stack(1), 1F);
                 }
 
                 if(block != null)
                 {
-                    CRItems.addRecipe(block, "SSS", "SSS", "SSS", 'S', item.stack(1));
-                    CRItems.addShapelessRecipe(item.stack(9), block);
+                    CRCommon.addRecipe(block, "SSS", "SSS", "SSS", 'S', item.stack(1));
+                    CRCommon.addShapelessRecipe(item.stack(9), block);
                 }
 
                 if(map.containsKey(GroupMatType.ROD))
                 {
-                    CRItems.addRecipe(map.get(GroupMatType.ROD).stack(4), "I", "I", 'I', item.oreName);
+                    CRCommon.addRecipe(map.get(GroupMatType.ROD).stack(4), "I", "I", 'I', item.oreName);
                 }
             }
         }
@@ -186,32 +187,44 @@ public class ItemMaterials extends Item
 
     public class NewMetal extends GroupMat
     {
-        public NewMetal(int i, String s, String ore)
+        public NewMetal(int i, EnumMetalType metal)
         {
-            super(i, s);
-            add(GroupMatType.ITEM, "ingot" + ore);
-            add(GroupMatType.NUGGET, "nugget" + ore);
-            add(GroupMatType.DUST, "dust" + ore);
-            add(GroupMatType.GEAR, "gear" + ore);
+            super(i, metal.name);
+            add(GroupMatType.ITEM, "ingot" + metal.oreName);
+            add(GroupMatType.NUGGET, "nugget" + metal.oreName);
+            add(GroupMatType.DUST, "dust" + metal.oreName);
+            add(GroupMatType.GEAR, "gear" + metal.oreName);
+
+            setBlock(metal.stack(true, 1));
+
+            if(metal.hasOre)
+            {
+                setOre(metal.stack(false, 1));
+            }
         }
     }
 
     public class NewGem extends GroupMat
     {
-        public NewGem(int i, String s, String ore)
+        public NewGem(int i, EnumGemType gem)
         {
-            super(i, s);
-            add(GroupMatType.ITEM, "gem" + ore);
-            add(GroupMatType.NUGGET, "shard" + ore);
-            //add(GroupMatType.DUST, "dust" + ore);
-            //add(GroupMatType.GEAR, "gear" + ore);
+            super(i, gem.name);
+            add(GroupMatType.ITEM, "gem" + gem.oreName);
+            add(GroupMatType.NUGGET, "shard" + gem.oreName);
+
+            setBlock(gem.stack(true, 1));
+
+            if(gem.hasOre)
+            {
+                setOre(gem.stack(false, 1));
+            }
         }
     }
 
     public final Map<Integer, Mat> materials;
 
-    public final GroupMat copper, tin, silver, lead, bronze, steel;
-    public final GroupMat ruby, sapphire, peridot;
+    public final Map<EnumMetalType, NewMetal> new_metals;
+    public final Map<EnumGemType, NewGem> new_gems;
     public final GroupMat stone, iron, gold, diamond, lapis;
     public final Mat dye_blue, silicon;
 
@@ -223,19 +236,19 @@ public class ItemMaterials extends Item
 
         materials = new LinkedHashMap<>();
 
-        copper = new NewMetal(0, "copper", "Copper").setOre(EnumMetalType.COPPER.stack(false, 1)).setBlock(EnumMetalType.COPPER.stack(true, 1));
-        tin = new NewMetal(10, "tin", "Tin").setOre(EnumMetalType.TIN.stack(false, 1)).setBlock(EnumMetalType.TIN.stack(true, 1));
-        silver = new NewMetal(20, "silver", "Silver").setOre(EnumMetalType.SILVER.stack(false, 1)).setBlock(EnumMetalType.SILVER.stack(true, 1));
-        lead = new NewMetal(30, "lead", "Lead").setOre(EnumMetalType.LEAD.stack(false, 1)).setBlock(EnumMetalType.LEAD.stack(true, 1));
-        bronze = new NewMetal(40, "bronze", "Bronze").setBlock(EnumMetalType.BRONZE.stack(true, 1));
-        steel = new NewMetal(50, "steel", "Steel").setBlock(EnumMetalType.STEEL.stack(true, 1));
-        //nickel
-        //platinum
-        //invar
+        new_metals = new EnumMap<>(EnumMetalType.class);
 
-        ruby = new NewGem(200, "ruby", "Ruby").setOre(EnumMetalType.RUBY.stack(false, 1)).setBlock(EnumMetalType.RUBY.stack(true, 1));
-        sapphire = new NewGem(210, "sapphire", "Sapphire").setOre(EnumMetalType.SAPPHIRE.stack(false, 1)).setBlock(EnumMetalType.SAPPHIRE.stack(true, 1));
-        peridot = new NewGem(220, "peridot", "Peridot").setOre(EnumMetalType.PERIDOT.stack(false, 1)).setBlock(EnumMetalType.PERIDOT.stack(true, 1));
+        for(EnumMetalType t : EnumMetalType.BLOCKS)
+        {
+            new_metals.put(t, new NewMetal(t.meta * 10, t));
+        }
+
+        new_gems = new EnumMap<>(EnumGemType.class);
+
+        for(EnumGemType t : EnumGemType.BLOCKS)
+        {
+            new_gems.put(t, new NewGem(200 + t.meta * 10, t));
+        }
 
         stone = new GroupMat(350, "stone").add(GroupMatType.ITEM, "stone", new ItemStack(Blocks.STONE)).add(GroupMatType.DUST, "dustStone").add(GroupMatType.GEAR, "gearStone").add(GroupMatType.ROD, "rodStone");
         iron = new GroupMat(360, "iron").add(GroupMatType.ITEM, "ingotIron", new ItemStack(Items.IRON_INGOT)).add(GroupMatType.NUGGET, "nuggetIron").add(GroupMatType.DUST, "dustIron").add(GroupMatType.GEAR, "gearIron").add(GroupMatType.ROD, "rodIron");
@@ -268,16 +281,15 @@ public class ItemMaterials extends Item
 
     public void loadRecipes()
     {
-        copper.loadRecipes();
-        tin.loadRecipes();
-        silver.loadRecipes();
-        lead.loadRecipes();
-        bronze.loadRecipes();
-        steel.loadRecipes();
+        for(NewMetal metal : new_metals.values())
+        {
+            metal.loadRecipes();
+        }
 
-        ruby.loadRecipes();
-        sapphire.loadRecipes();
-        peridot.loadRecipes();
+        for(NewGem gem : new_gems.values())
+        {
+            gem.loadRecipes();
+        }
 
         stone.loadRecipes();
         iron.loadRecipes();
@@ -285,8 +297,10 @@ public class ItemMaterials extends Item
         diamond.loadRecipes();
         lapis.loadRecipes();
 
-        CRItems.addShapelessRecipe(dye_blue.stack(2), "dyeLightBlue", "dyeBlack");
-        CRItems.addRecipe(new ItemStack(Items.DYE, 4, EnumDyeColor.GREEN.getDyeDamage()), "GGG", "GWG", "GGG", 'G', Blocks.TALLGRASS, 'W', Items.WATER_BUCKET);
+        CRCommon.addShapelessRecipe(dye_blue.stack(2), "dyeLightBlue", "dyeBlack");
+        CRCommon.addRecipe(new ItemStack(Items.DYE, 4, EnumDyeColor.GREEN.getDyeDamage()), "GGG", "GWG", "GGG", 'G', Blocks.TALLGRASS, 'W', Items.WATER_BUCKET);
+        CRCommon.addShapelessRecipe(new_metals.get(EnumMetalType.BRONZE).map.get(GroupMatType.DUST).stack(4), "dustTin", "dustCopper", "dustCopper", "dustCopper");
+        CRCommon.addShapelessRecipe(new_metals.get(EnumMetalType.INVAR).map.get(GroupMatType.DUST).stack(3), "dustIron", "dustIron", "dustNickel");
     }
 
     @SideOnly(Side.CLIENT)
@@ -294,14 +308,7 @@ public class ItemMaterials extends Item
     {
         for(Mat m : materials.values())
         {
-            if(m == dye_blue || m == silicon)
-            {
-                ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, m.id), "inventory"));
-            }
-            else
-            {
-                ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(getRegistryName(), "variant=" + m.id));
-            }
+            ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, m.id), "inventory"));
         }
     }
 

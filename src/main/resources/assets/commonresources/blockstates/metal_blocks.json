@@ -5,16 +5,17 @@
     "transform": "forge:default-block"
   },
   "variants": {
+    "inventory": [{}],
     "variant": {
       "copper": {"textures": {"all": "commonresources:copper/block"}},
       "tin": {"textures": {"all": "commonresources:tin/block"}},
       "silver": {"textures": {"all": "commonresources:silver/block"}},
       "lead": {"textures": {"all": "commonresources:lead/block"}},
-      "ruby": {"textures": {"all": "commonresources:ruby/block"}},
-      "sapphire": {"textures": {"all": "commonresources:sapphire/block"}},
-      "peridot": {"textures": {"all": "commonresources:peridot/block"}},
       "bronze": {"textures": {"all": "commonresources:bronze/block"}},
-      "steel": {"textures": {"all": "commonresources:steel/block"}}
+      "steel": {"textures": {"all": "commonresources:steel/block"}},
+      "nickel": {"textures": {"all": "commonresources:nickel/block"}},
+      "platinum": {"textures": {"all": "commonresources:platinum/block"}},
+      "invar": {"textures": {"all": "commonresources:invar/block"}}
     }
   }
 }

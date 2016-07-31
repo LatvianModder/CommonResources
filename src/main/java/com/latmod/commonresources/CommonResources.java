@@ -39,20 +39,19 @@ public class CommonResources
             @SideOnly(Side.CLIENT)
             public Item getTabIconItem()
             {
-                return CRItems.MATERIALS;
+                return CRCommon.MATERIALS;
             }
 
             @Override
             @SideOnly(Side.CLIENT)
             public int getIconItemDamage()
             {
-                return CRItems.MATERIALS.diamond.map.get(GroupMatType.GEAR).getMeta();
+                return CRCommon.MATERIALS.diamond.map.get(GroupMatType.GEAR).getMeta();
             }
         };
 
         CRConfig.load(new File(event.getModConfigurationDirectory(), "CommonResources.json"));
-        CRItems.init();
-        proxy.preInit();
+        proxy.initItems();
     }
 
     @Mod.EventHandler
@@ -60,8 +59,8 @@ public class CommonResources
     {
         if(CRConfig.enable_crafting)
         {
-            CRItems.MATERIALS.loadRecipes();
-            CRItems.HAMMER.loadRecipes();
+            CRCommon.MATERIALS.loadRecipes();
+            CRCommon.HAMMER.loadRecipes();
         }
     }
 }

@@ -5,14 +5,14 @@
     "transform": "forge:default-block"
   },
   "variants": {
+    "inventory": [{}],
     "variant": {
       "copper": {"textures": {"all": "commonresources:copper/ore"}},
       "tin": {"textures": {"all": "commonresources:tin/ore"}},
       "silver": {"textures": {"all": "commonresources:silver/ore"}},
       "lead": {"textures": {"all": "commonresources:lead/ore"}},
-      "ruby": {"textures": {"all": "commonresources:ruby/ore"}},
-      "sapphire": {"textures": {"all": "commonresources:sapphire/ore"}},
-      "peridot": {"textures": {"all": "commonresources:peridot/ore"}}
+      "nickel": {"textures": {"all": "commonresources:nickel/ore"}},
+      "platinum": {"textures": {"all": "commonresources:platinum/ore"}}
     }
   }
 }
