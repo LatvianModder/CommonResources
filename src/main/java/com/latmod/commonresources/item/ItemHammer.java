@@ -57,6 +57,7 @@ public class ItemHammer extends Item
         overrides.put("oreRedstone", new ItemStack(Items.REDSTONE, 4));
         overrides.put("oreDiamond", new ItemStack(Items.DIAMOND, 2));
         overrides.put("oreEmerald", new ItemStack(Items.EMERALD, 2));
+        overrides.put("gemDiamond", CRCommon.MATERIALS.diamond.map.get(GroupMatType.DUST).stack(1));
 
         for(Map.Entry<String, ItemStack> entry : overrides.entrySet())
         {

@@ -4,6 +4,7 @@ import com.latmod.commonresources.CRCommon;
 import com.latmod.commonresources.CommonResources;
 import com.latmod.commonresources.block.EnumGemType;
 import com.latmod.commonresources.block.EnumMetalType;
+import gnu.trove.map.hash.TIntObjectHashMap;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -19,8 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,14 +36,16 @@ public class ItemMaterials extends Item
         public final String id;
         public final String uname;
         public final String oreName;
+        public final GroupMatType type;
         private final int meta;
 
-        public Mat(int m, String s, String ore)
+        public Mat(int m, String s, String ore, GroupMatType t)
         {
             meta = m;
             id = s;
-            oreName = ore;
             uname = "item." + s.replace('_', '.');
+            oreName = ore;
+            type = t;
         }
 
         public Item getItem()
@@ -72,7 +76,14 @@ public class ItemMaterials extends Item
         @Override
         public int compareTo(@Nonnull Mat o)
         {
-            return id.compareTo(o.id);
+            int i = Integer.compare(type.ordinal(), o.type.ordinal());
+
+            if(i == 0)
+            {
+                i = id.compareTo(o.id);
+            }
+
+            return i;
         }
     }
 
@@ -80,15 +91,15 @@ public class ItemMaterials extends Item
     {
         private final Item item;
 
-        public FakeMat(int m, String s, String ore, Item i)
+        public FakeMat(int m, String s, String ore, Item i, GroupMatType t)
         {
-            super(m, s, ore);
+            super(m, s, ore, t);
             item = i;
         }
 
-        public FakeMat(String s, String ore, ItemStack is)
+        public FakeMat(String s, String ore, ItemStack is, GroupMatType t)
         {
-            this(is.getMetadata(), s, ore, is.getItem());
+            this(is.getMetadata(), s, ore, is.getItem(), t);
         }
 
         @Override
@@ -126,13 +137,13 @@ public class ItemMaterials extends Item
 
         public GroupMat add(GroupMatType type, String ore)
         {
-            map.put(type, addMaterial(new Mat(meta0 + type.ordinal(), id + '_' + type.name, ore)));
+            map.put(type, addMaterial(new Mat(meta0 + type.ordinal(), id + '_' + type.name, ore, type)));
             return this;
         }
 
         public GroupMat add(GroupMatType type, String ore, ItemStack is)
         {
-            map.put(type, new FakeMat(id + '_' + type.name, ore, is));
+            map.put(type, new FakeMat(id + '_' + type.name, ore, is, type));
             return this;
         }
 
@@ -221,7 +232,8 @@ public class ItemMaterials extends Item
         }
     }
 
-    public final Map<Integer, Mat> materials;
+    public final TIntObjectHashMap<Mat> materials;
+    public final List<Mat> sortedMaterials;
 
     public final Map<EnumMetalType, NewMetal> new_metals;
     public final Map<EnumGemType, NewGem> new_gems;
@@ -234,7 +246,7 @@ public class ItemMaterials extends Item
         setHasSubtypes(true);
         setCreativeTab(CommonResources.creativeTab);
 
-        materials = new LinkedHashMap<>();
+        materials = new TIntObjectHashMap<>();
 
         new_metals = new EnumMap<>(EnumMetalType.class);
 
@@ -256,8 +268,10 @@ public class ItemMaterials extends Item
         diamond = new GroupMat(380, "diamond").add(GroupMatType.ITEM, "gemDiamond", new ItemStack(Items.DIAMOND)).add(GroupMatType.NUGGET, "nuggetDiamond").add(GroupMatType.DUST, "dustDiamond").add(GroupMatType.GEAR, "gearDiamond").add(GroupMatType.ROD, "rodDiamond");
         lapis = new GroupMat(390, "lapis").add(GroupMatType.ITEM, "gemLapis", new ItemStack(Items.DYE, 1, 4)).add(GroupMatType.NUGGET, "shardLapis").add(GroupMatType.DUST, "dustLapis");
 
-        dye_blue = addMaterial(new Mat(1200, "dye_blue", "dyeBlue"));
-        silicon = addMaterial(new Mat(1210, "silicon", "itemSilicon"));
+        dye_blue = addMaterial(new Mat(1200, "dye_blue", "dyeBlue", GroupMatType.OTHER));
+        silicon = addMaterial(new Mat(1210, "silicon", "itemSilicon", GroupMatType.OTHER));
+
+        sortedMaterials = new ArrayList<>(materials.size());
     }
 
     private Mat addMaterial(Mat m)
@@ -268,7 +282,10 @@ public class ItemMaterials extends Item
 
     public void init()
     {
-        for(Mat m : materials.values())
+        sortedMaterials.addAll(materials.valueCollection());
+        Collections.sort(sortedMaterials, null);
+
+        for(Mat m : sortedMaterials)
         {
             if(m.oreName != null)
             {
@@ -306,7 +323,7 @@ public class ItemMaterials extends Item
     @SideOnly(Side.CLIENT)
     public void loadModels()
     {
-        for(Mat m : materials.values())
+        for(Mat m : sortedMaterials)
         {
             ModelLoader.setCustomModelResourceLocation(this, m.meta, new ModelResourceLocation(new ResourceLocation(CommonResources.MOD_ID, m.id), "inventory"));
         }
@@ -330,7 +347,7 @@ public class ItemMaterials extends Item
     @SideOnly(Side.CLIENT)
     public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
     {
-        for(Mat m : materials.values())
+        for(Mat m : sortedMaterials)
         {
             subItems.add(m.stack(1));
         }

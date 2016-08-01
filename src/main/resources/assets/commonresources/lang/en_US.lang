@@ -79,6 +79,11 @@ tile.peridot.block.name=Peridot Block
 item.peridot.item.name=Peridot
 item.peridot.nugget.name=Peridot Nugget
 
+tile.amethyst.ore.name=Amethyst Ore
+tile.amethyst.block.name=Amethyst Block
+item.amethyst.item.name=Amethyst
+item.amethyst.nugget.name=Amethyst Nugget
+
 item.iron.nugget.name=Iron Nugget
 item.iron.dust.name=Iron Dust
 item.iron.gear.name=Iron Gear

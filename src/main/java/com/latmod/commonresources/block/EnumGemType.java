@@ -15,7 +15,8 @@ public enum EnumGemType implements IStringSerializable
 {
     RUBY(0, "Ruby", true),
     SAPPHIRE(1, "Sapphire", true),
-    PERIDOT(2, "Peridot", true);
+    PERIDOT(2, "Peridot", true),
+    AMETHYST(3, "Amethyst", true);
 
     public static final EnumGemType[] BLOCKS = values();
     public static final EnumGemType[] ORES;

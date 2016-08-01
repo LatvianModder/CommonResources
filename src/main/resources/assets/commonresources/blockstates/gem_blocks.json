@@ -8,7 +8,8 @@
     "variant": {
       "ruby": {"model": "commonresources:ruby_block"},
       "sapphire": {"model": "commonresources:sapphire_block"},
-      "peridot": {"model": "commonresources:peridot_block"}
+      "peridot": {"model": "commonresources:peridot_block"},
+      "amethyst": {"model": "commonresources:amethyst_block"}
     }
   }
 }

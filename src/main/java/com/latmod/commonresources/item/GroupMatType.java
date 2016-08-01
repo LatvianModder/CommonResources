@@ -9,7 +9,8 @@ public enum GroupMatType
     NUGGET,
     DUST,
     GEAR,
-    ROD;
+    ROD,
+    OTHER;
 
     public final int flag;
     public final String name;
