@@ -2,11 +2,9 @@ package com.latmod.commonresources.item;
 
 import com.latmod.commonresources.CRCommon;
 import com.latmod.commonresources.CRConfig;
-import com.latmod.commonresources.CommonResources;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -21,11 +19,10 @@ import java.util.Map;
 /**
  * Created by LatvianModder on 16.05.2016.
  */
-public class ItemHammer extends Item
+public class ItemHammer extends ItemCR
 {
     public ItemHammer()
     {
-        setCreativeTab(CommonResources.creativeTab);
         setUnlocalizedName("commonresources.hammer");
         setMaxDamage(Math.min(Math.max(0, CRConfig.hammer_max_uses), 16384));
         setMaxStackSize(1);

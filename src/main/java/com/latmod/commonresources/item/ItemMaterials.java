@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * Created by LatvianModder on 02.07.2016.
  */
-public class ItemMaterials extends Item
+public class ItemMaterials extends ItemCR
 {
     public class Mat implements Comparable<Mat>
     {
@@ -244,7 +244,6 @@ public class ItemMaterials extends Item
     {
         setMaxDamage(0);
         setHasSubtypes(true);
-        setCreativeTab(CommonResources.creativeTab);
 
         materials = new TIntObjectHashMap<>();
 
