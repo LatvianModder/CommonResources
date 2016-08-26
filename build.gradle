@@ -22,11 +22,14 @@ plugins {
 version = "1.9.4-0.0.1"
 group = "com.latmod.commonresources" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "CommonResources"
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
 
 minecraft {
-    version = "1.9.4-12.17.0.1987"
+    version = "1.10.2-12.18.1.2073"
     runDir = "run"
 
     // the mappings can be changed at any time, and must be in the following format.
