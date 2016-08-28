@@ -4,7 +4,6 @@ import com.latmod.commonresources.CRCommon;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,10 +61,10 @@ public enum EnumMetalType implements IStringSerializable
 
     public static EnumMetalType byMetadata(int meta)
     {
-        return (meta >= 0 && meta < BLOCKS.length) ? BLOCKS[meta] : null;
+        EnumMetalType t = (meta >= 0 && meta < BLOCKS.length) ? BLOCKS[meta] : null;
+        return (t == null) ? COPPER : t;
     }
 
-    @Nonnull
     @Override
     public String getName()
     {

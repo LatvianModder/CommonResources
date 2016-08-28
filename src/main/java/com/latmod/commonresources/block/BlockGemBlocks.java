@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -38,7 +37,7 @@ public class BlockGemBlocks extends BlockCR
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> list)
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
         for(EnumGemType t : EnumGemType.BLOCKS)
         {
@@ -65,7 +64,6 @@ public class BlockGemBlocks extends BlockCR
         }
     }
 
-    @Nonnull
     @Override
     @Deprecated
     public IBlockState getStateFromMeta(int meta)
@@ -79,7 +77,6 @@ public class BlockGemBlocks extends BlockCR
         return state.getValue(VARIANT).meta;
     }
 
-    @Nonnull
     @Override
     protected BlockStateContainer createBlockState()
     {
@@ -91,7 +88,6 @@ public class BlockGemBlocks extends BlockCR
     {
         return new ItemBlockCR(this)
         {
-            @Nonnull
             @Override
             public String getUnlocalizedName(ItemStack stack)
             {

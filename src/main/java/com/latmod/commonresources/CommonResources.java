@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 
 /**
@@ -22,19 +21,18 @@ public class CommonResources
     public static final String MOD_ID = "commonresources";
 
     @Mod.Instance(CommonResources.MOD_ID)
-    public static CommonResources inst;
+    public static CommonResources INST;
 
     @SidedProxy(serverSide = "com.latmod.commonresources.CRCommon", clientSide = "com.latmod.commonresources.CRClient")
     public static CRCommon proxy;
 
-    public static CreativeTabs creativeTab;
+    public CreativeTabs creativeTab;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         creativeTab = new CreativeTabs("commonresources")
         {
-            @Nonnull
             @Override
             @SideOnly(Side.CLIENT)
             public Item getTabIconItem()

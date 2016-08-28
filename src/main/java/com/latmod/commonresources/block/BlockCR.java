@@ -9,8 +9,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
-
 /**
  * Created by LatvianModder on 01.08.2016.
  */
@@ -21,12 +19,11 @@ public abstract class BlockCR extends Block
         super(m);
     }
 
-    @Nonnull
     @Override
     @SideOnly(Side.CLIENT)
     public CreativeTabs getCreativeTabToDisplayOn()
     {
-        return CommonResources.creativeTab;
+        return CommonResources.INST.creativeTab;
     }
 
     public abstract ItemBlock createItemBlock();

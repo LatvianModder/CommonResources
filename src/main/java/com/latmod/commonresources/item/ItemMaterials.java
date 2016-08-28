@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -74,7 +73,7 @@ public class ItemMaterials extends ItemCR
         }
 
         @Override
-        public int compareTo(@Nonnull Mat o)
+        public int compareTo(Mat o)
         {
             int i = Integer.compare(type.ordinal(), o.type.ordinal());
 
@@ -328,7 +327,6 @@ public class ItemMaterials extends ItemCR
         }
     }
 
-    @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
@@ -344,7 +342,7 @@ public class ItemMaterials extends ItemCR
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
     {
         for(Mat m : sortedMaterials)
         {

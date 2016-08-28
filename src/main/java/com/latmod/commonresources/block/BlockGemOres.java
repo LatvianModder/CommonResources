@@ -26,7 +26,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
@@ -49,7 +48,7 @@ public class BlockGemOres extends BlockCR
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(@Nonnull Item itemIn, CreativeTabs tab, List<ItemStack> list)
+    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list)
     {
         for(EnumGemType t : EnumGemType.ORES)
         {
@@ -76,7 +75,6 @@ public class BlockGemOres extends BlockCR
         }
     }
 
-    @Nonnull
     @Override
     @Deprecated
     public IBlockState getStateFromMeta(int meta)
@@ -90,7 +88,6 @@ public class BlockGemOres extends BlockCR
         return state.getValue(VARIANT).meta;
     }
 
-    @Nonnull
     @Override
     protected BlockStateContainer createBlockState()
     {
@@ -113,13 +110,13 @@ public class BlockGemOres extends BlockCR
     }
 
     @Override
-    public int quantityDropped(IBlockState state, int fortune, @Nonnull Random random)
+    public int quantityDropped(IBlockState state, int fortune, Random random)
     {
         return 1 + random.nextInt(2);
     }
 
     @Override
-    public int quantityDroppedWithBonus(int fortune, @Nonnull Random random)
+    public int quantityDroppedWithBonus(int fortune, Random random)
     {
         if(fortune > 0 && Item.getItemFromBlock(this) != getItemDropped(getBlockState().getValidStates().iterator().next(), random, fortune))
         {
@@ -144,9 +141,8 @@ public class BlockGemOres extends BlockCR
         return MathHelper.getRandomIntegerInRange(world instanceof World ? ((World) world).rand : new Random(), 2, 5);
     }
 
-    @Nonnull
     @Override
-    public ItemStack getPickBlock(@Nonnull IBlockState state, RayTraceResult target, @Nonnull World world, @Nonnull BlockPos pos, EntityPlayer player)
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
         return new ItemStack(this, 1, getMetaFromState(state));
     }
@@ -156,7 +152,6 @@ public class BlockGemOres extends BlockCR
     {
         return new ItemBlockCR(this)
         {
-            @Nonnull
             @Override
             public String getUnlocalizedName(ItemStack stack)
             {

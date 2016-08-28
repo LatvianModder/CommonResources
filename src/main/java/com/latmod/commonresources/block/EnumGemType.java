@@ -4,7 +4,6 @@ import com.latmod.commonresources.CRCommon;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,10 +56,10 @@ public enum EnumGemType implements IStringSerializable
 
     public static EnumGemType byMetadata(int meta)
     {
-        return (meta >= 0 && meta < BLOCKS.length) ? BLOCKS[meta] : null;
+        EnumGemType t = (meta >= 0 && meta < BLOCKS.length) ? BLOCKS[meta] : null;
+        return (t == null) ? RUBY : t;
     }
 
-    @Nonnull
     @Override
     public String getName()
     {
