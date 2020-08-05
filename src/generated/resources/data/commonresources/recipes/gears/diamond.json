@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" R ",
+		"R R",
+		" R "
+	],
+	"key": {
+		"R": {
+			"tag": "forge:rods/diamond"
+		}
+	},
+	"result": {
+		"item": "commonresources:diamond_gear"
+	}
+}

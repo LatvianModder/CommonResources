@@ -1,0 +1,25 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:stone_rod",
+		"commonresources:iron_rod",
+		"commonresources:gold_rod",
+		"commonresources:copper_rod",
+		"commonresources:tin_rod",
+		"commonresources:silver_rod",
+		"commonresources:lead_rod",
+		"commonresources:nickel_rod",
+		"commonresources:platinum_rod",
+		"commonresources:bronze_rod",
+		"commonresources:steel_rod",
+		"commonresources:invar_rod",
+		"commonresources:quartz_rod",
+		"commonresources:lapis_rod",
+		"commonresources:diamond_rod",
+		"commonresources:emerald_rod",
+		"commonresources:ruby_rod",
+		"commonresources:sapphire_rod",
+		"commonresources:peridot_rod",
+		"commonresources:amethyst_rod"
+	]
+}

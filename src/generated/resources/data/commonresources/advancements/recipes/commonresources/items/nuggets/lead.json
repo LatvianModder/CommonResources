@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"commonresources:items/nuggets/lead"
+		]
+	},
+	"criteria": {
+		"has_nugget": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "forge:nuggets/lead"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "commonresources:items/nuggets/lead"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_nugget",
+			"has_the_recipe"
+		]
+	]
+}

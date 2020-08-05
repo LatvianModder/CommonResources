@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"commonresources:items/nuggets/bronze"
+		]
+	},
+	"criteria": {
+		"has_nugget": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "forge:nuggets/bronze"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "commonresources:items/nuggets/bronze"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_nugget",
+			"has_the_recipe"
+		]
+	]
+}

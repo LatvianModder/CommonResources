@@ -1,0 +1,15 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:copper_ore",
+		"commonresources:tin_ore",
+		"commonresources:silver_ore",
+		"commonresources:lead_ore",
+		"commonresources:nickel_ore",
+		"commonresources:platinum_ore",
+		"commonresources:ruby_ore",
+		"commonresources:sapphire_ore",
+		"commonresources:peridot_ore",
+		"commonresources:amethyst_ore"
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:gem/peridot/gem_ore"
+		}
+	}
+}

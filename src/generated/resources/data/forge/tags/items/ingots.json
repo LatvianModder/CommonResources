@@ -1,0 +1,14 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:copper_ingot",
+		"commonresources:tin_ingot",
+		"commonresources:silver_ingot",
+		"commonresources:lead_ingot",
+		"commonresources:nickel_ingot",
+		"commonresources:platinum_ingot",
+		"commonresources:bronze_ingot",
+		"commonresources:steel_ingot",
+		"commonresources:invar_ingot"
+	]
+}

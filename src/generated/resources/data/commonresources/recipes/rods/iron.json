@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"I",
+		"I"
+	],
+	"key": {
+		"I": {
+			"tag": "forge:ingots/iron"
+		}
+	},
+	"result": {
+		"item": "commonresources:iron_rod",
+		"count": 2
+	}
+}

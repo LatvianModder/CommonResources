@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:gem/sapphire/gem_storage_block"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"I",
+		"I"
+	],
+	"key": {
+		"I": {
+			"tag": "forge:gems/diamond"
+		}
+	},
+	"result": {
+		"item": "commonresources:diamond_rod",
+		"count": 2
+	}
+}

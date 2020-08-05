@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:gem/ruby/gem_storage_block"
+		}
+	}
+}

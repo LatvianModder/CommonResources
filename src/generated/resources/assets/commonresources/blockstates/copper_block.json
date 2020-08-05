@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:metal/copper/storage_block"
+		}
+	}
+}

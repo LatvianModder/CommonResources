@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"commonresources:items/nuggets/sapphire"
+		]
+	},
+	"criteria": {
+		"has_nugget": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "forge:nuggets/sapphire"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "commonresources:items/nuggets/sapphire"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_nugget",
+			"has_the_recipe"
+		]
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"commonresources:items/dust_smelting/emerald"
+		]
+	},
+	"criteria": {
+		"has_dust": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"tag": "forge:dusts/emerald"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "commonresources:items/dust_smelting/emerald"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_dust",
+			"has_the_recipe"
+		]
+	]
+}

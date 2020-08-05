@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "forge:gems/ruby"
+		}
+	],
+	"result": {
+		"item": "commonresources:ruby_nugget",
+		"count": 9
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:blasting",
+	"ingredient": {
+		"tag": "forge:dusts/sapphire"
+	},
+	"result": "commonresources:sapphire",
+	"experience": 0.1,
+	"cookingtime": 100
+}

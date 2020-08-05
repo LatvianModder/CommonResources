@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:ruby",
+		"commonresources:sapphire",
+		"commonresources:peridot",
+		"commonresources:amethyst"
+	]
+}

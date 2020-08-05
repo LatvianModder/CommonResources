@@ -1,0 +1,22 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:copper_nugget",
+		"commonresources:tin_nugget",
+		"commonresources:silver_nugget",
+		"commonresources:lead_nugget",
+		"commonresources:nickel_nugget",
+		"commonresources:platinum_nugget",
+		"commonresources:bronze_nugget",
+		"commonresources:steel_nugget",
+		"commonresources:invar_nugget",
+		"commonresources:quartz_nugget",
+		"commonresources:lapis_nugget",
+		"commonresources:diamond_nugget",
+		"commonresources:emerald_nugget",
+		"commonresources:ruby_nugget",
+		"commonresources:sapphire_nugget",
+		"commonresources:peridot_nugget",
+		"commonresources:amethyst_nugget"
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:metal/nickel/storage_block"
+		}
+	}
+}

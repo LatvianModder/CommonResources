@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "commonresources:gem/peridot/gem_ore"
+	}
+}

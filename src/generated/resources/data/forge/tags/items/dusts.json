@@ -1,0 +1,25 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:stone_dust",
+		"commonresources:iron_dust",
+		"commonresources:gold_dust",
+		"commonresources:copper_dust",
+		"commonresources:tin_dust",
+		"commonresources:silver_dust",
+		"commonresources:lead_dust",
+		"commonresources:nickel_dust",
+		"commonresources:platinum_dust",
+		"commonresources:bronze_dust",
+		"commonresources:steel_dust",
+		"commonresources:invar_dust",
+		"commonresources:quartz_dust",
+		"commonresources:lapis_dust",
+		"commonresources:diamond_dust",
+		"commonresources:emerald_dust",
+		"commonresources:ruby_dust",
+		"commonresources:sapphire_dust",
+		"commonresources:peridot_dust",
+		"commonresources:amethyst_dust"
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:metal/bronze/storage_block"
+		}
+	}
+}

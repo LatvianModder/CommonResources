@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"I",
+		"I"
+	],
+	"key": {
+		"I": {
+			"tag": "forge:gems/lapis"
+		}
+	},
+	"result": {
+		"item": "commonresources:lapis_rod",
+		"count": 2
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:stone_gear",
+		"commonresources:wooden_gear",
+		"commonresources:iron_gear",
+		"commonresources:gold_gear",
+		"commonresources:copper_gear",
+		"commonresources:tin_gear",
+		"commonresources:silver_gear",
+		"commonresources:lead_gear",
+		"commonresources:nickel_gear",
+		"commonresources:platinum_gear",
+		"commonresources:bronze_gear",
+		"commonresources:steel_gear",
+		"commonresources:invar_gear",
+		"commonresources:quartz_gear",
+		"commonresources:lapis_gear",
+		"commonresources:diamond_gear",
+		"commonresources:emerald_gear",
+		"commonresources:ruby_gear",
+		"commonresources:sapphire_gear",
+		"commonresources:peridot_gear",
+		"commonresources:amethyst_gear"
+	]
+}

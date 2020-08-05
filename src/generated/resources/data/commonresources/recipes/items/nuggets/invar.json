@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"NNN",
+		"NNN",
+		"NNN"
+	],
+	"key": {
+		"N": {
+			"tag": "forge:nuggets/invar"
+		}
+	},
+	"result": {
+		"item": "commonresources:invar_ingot"
+	}
+}

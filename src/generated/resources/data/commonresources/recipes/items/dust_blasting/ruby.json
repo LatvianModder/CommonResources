@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:blasting",
+	"ingredient": {
+		"tag": "forge:dusts/ruby"
+	},
+	"result": "commonresources:ruby",
+	"experience": 0.1,
+	"cookingtime": 100
+}

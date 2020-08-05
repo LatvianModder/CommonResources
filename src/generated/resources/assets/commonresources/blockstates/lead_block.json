@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "commonresources:metal/lead/storage_block"
+		}
+	}
+}
