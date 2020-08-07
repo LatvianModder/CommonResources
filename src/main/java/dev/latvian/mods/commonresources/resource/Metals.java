@@ -19,6 +19,7 @@ public class Metals
 
 	public static Resource<MetalItem> IRON;
 	public static Resource<MetalItem> GOLD;
+	public static Resource<MetalItem> NETHERITE;
 
 	public static Resource<MetalItem> COPPER;
 	public static Resource<MetalItem> TIN;
@@ -26,6 +27,8 @@ public class Metals
 	public static Resource<MetalItem> LEAD;
 	public static Resource<MetalItem> NICKEL;
 	public static Resource<MetalItem> PLATINUM;
+	public static Resource<MetalItem> ALUMINIUM;
+	public static Resource<MetalItem> URANIUM;
 
 	public static Resource<MetalItem> BRONZE;
 	public static Resource<MetalItem> STEEL;
@@ -41,6 +44,7 @@ public class Metals
 				.newDust()
 				.newRod()
 				.newGear()
+				.newPlate()
 				.color("border", 0x5E5E5E)
 				.color("shine", 0xFFFFFF)
 				.color("shade_1", 0xD8D8D8)
@@ -57,12 +61,29 @@ public class Metals
 				.newDust()
 				.newRod()
 				.newGear()
+				.newPlate()
 				.color("border", 0xB26411)
 				.color("shine", 0xFFFDE0)
 				.color("shade_1", 0xFDF55F)
 				.color("shade_2", 0xFAD64A)
 				.color("shade_3", 0xE9B115)
 				.color("shade_4", 0xDC9613)
+		;
+
+		NETHERITE = add("netherite", "Netherite")
+				.item(() -> Items.NETHERITE_INGOT)
+				.storageBlock(() -> Items.NETHERITE_BRICKS, () -> Blocks.NETHERITE_BLOCK)
+				.newNugget()
+				.newDust()
+				.newRod()
+				.newGear()
+				.newPlate()
+				.color("border", 0x271C1D)
+				.color("shine", 0x737173)
+				.color("shade_1", 0x5A575A)
+				.color("shade_2", 0x4D494D)
+				.color("shade_3", 0x3C3232)
+				.color("shade_4", 0x31292A)
 		;
 
 		// New metals //
@@ -125,6 +146,26 @@ public class Metals
 				.color("shade_2", 0x8DC7BE)
 				.color("shade_3", 0x79ACA4)
 				.color("shade_4", 0x6C9A93)
+		;
+
+		ALUMINIUM = add("aluminium", "Aluminium")
+				.newEverything()
+				.color("border", 0x93818E)
+				.color("shine", 0xFFFFFF)
+				.color("shade_1", 0xECDCE5)
+				.color("shade_2", 0xE5CADC)
+				.color("shade_3", 0xDCC2D4)
+				.color("shade_4", 0xCEB5C6)
+		;
+
+		URANIUM = add("uranium", "Uranium")
+				.newEverything()
+				.color("border", 0x32493C)
+				.color("shine", 0xD0EADB)
+				.color("shade_1", 0x83C19E)
+				.color("shade_2", 0x77AF90)
+				.color("shade_3", 0x66967B)
+				.color("shade_4", 0x577F69)
 		;
 
 		// New non-ore metals //

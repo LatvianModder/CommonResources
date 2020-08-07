@@ -14,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
@@ -55,6 +56,49 @@ public class CommonResources
 			public ItemStack createIcon()
 			{
 				return new ItemStack(Gems.RUBY.item.getItem());
+			}
+
+			@Override
+			@OnlyIn(Dist.CLIENT)
+			public void fill(NonNullList<ItemStack> items)
+			{
+				for (Resource<?> resource : Resource.ALL_MAP.values())
+				{
+					if (resource.item.itemExists())
+					{
+						items.add(new ItemStack(resource.item.getItem()));
+					}
+
+					if (resource.nugget.itemExists())
+					{
+						items.add(new ItemStack(resource.nugget.getItem()));
+					}
+
+					if (resource.dust.itemExists())
+					{
+						items.add(new ItemStack(resource.dust.getItem()));
+					}
+
+					if (resource.rod.itemExists())
+					{
+						items.add(new ItemStack(resource.rod.getItem()));
+					}
+
+					if (resource.gear.itemExists())
+					{
+						items.add(new ItemStack(resource.gear.getItem()));
+					}
+
+					if (resource.storageBlock.itemExists())
+					{
+						items.add(new ItemStack(resource.storageBlock.getItem()));
+					}
+
+					if (resource.ore.itemExists())
+					{
+						items.add(new ItemStack(resource.ore.getItem()));
+					}
+				}
 			}
 		};
 

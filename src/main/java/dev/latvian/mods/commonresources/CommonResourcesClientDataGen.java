@@ -44,7 +44,7 @@ public class CommonResourcesClientDataGen
 				}
 			};
 
-			gen.addProvider(new CombinedTextures(gen, fileHelper));
+			gen.addProvider(new CombinedTextures(gen, event.getExistingFileHelper()));
 			gen.addProvider(new BlockStates(gen, fileHelper));
 			gen.addProvider(new ItemModels(gen, fileHelper));
 			gen.addProvider(new BlockModels(gen, fileHelper));

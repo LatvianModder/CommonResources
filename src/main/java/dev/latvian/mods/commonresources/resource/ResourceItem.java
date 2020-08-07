@@ -25,6 +25,8 @@ public class ResourceItem
 	public Supplier<Block> block;
 	public Supplier<Item> item;
 	public boolean disableRecipe;
+	public String tagName;
+	public boolean disabled;
 
 	public ResourceItem(Resource<?> r, ItemType t)
 	{
@@ -38,13 +40,15 @@ public class ResourceItem
 		block = null;
 		item = null;
 		disableRecipe = false;
+		tagName = "";
+		disabled = false;
 	}
 
 	public ITag.INamedTag<Item> getItemTag()
 	{
 		if (itemTag == null)
 		{
-			itemTag = ItemTags.makeWrapperTag(type.tagName + "/" + resource.name);
+			itemTag = ItemTags.makeWrapperTag(tagName.isEmpty() ? (type.tagName + "/" + resource.name) : tagName);
 		}
 
 		return itemTag;
@@ -54,7 +58,7 @@ public class ResourceItem
 	{
 		if (blockTag == null)
 		{
-			blockTag = BlockTags.makeWrapperTag(type.tagName + "/" + resource.name);
+			blockTag = BlockTags.makeWrapperTag(tagName.isEmpty() ? (type.tagName + "/" + resource.name) : tagName);
 		}
 
 		return blockTag;

@@ -7,6 +7,8 @@
 		"commonresources:lead_block",
 		"commonresources:nickel_block",
 		"commonresources:platinum_block",
+		"commonresources:aluminium_block",
+		"commonresources:uranium_block",
 		"commonresources:bronze_block",
 		"commonresources:steel_block",
 		"commonresources:invar_block",

@@ -1,0 +1,28 @@
+{
+	"replace": false,
+	"values": [
+		"commonresources:stone_plate",
+		"commonresources:iron_plate",
+		"commonresources:gold_plate",
+		"commonresources:netherite_plate",
+		"commonresources:copper_plate",
+		"commonresources:tin_plate",
+		"commonresources:silver_plate",
+		"commonresources:lead_plate",
+		"commonresources:nickel_plate",
+		"commonresources:platinum_plate",
+		"commonresources:aluminium_plate",
+		"commonresources:uranium_plate",
+		"commonresources:bronze_plate",
+		"commonresources:steel_plate",
+		"commonresources:invar_plate",
+		"commonresources:quartz_plate",
+		"commonresources:lapis_plate",
+		"commonresources:diamond_plate",
+		"commonresources:emerald_plate",
+		"commonresources:ruby_plate",
+		"commonresources:sapphire_plate",
+		"commonresources:peridot_plate",
+		"commonresources:amethyst_plate"
+	]
+}

@@ -125,6 +125,12 @@ public abstract class CombinedTextureProvider implements IDataProvider
 
 		for (CombinedTexture tex : map.values())
 		{
+			if (existingFileHelper.exists(new ResourceLocation(modid, tex.output + ".png"), ResourcePackType.CLIENT_RESOURCES, "", "textures"))
+			{
+				CommonResources.LOGGER.info("Skipping " + tex.output + " as it already exists");
+				continue;
+			}
+
 			CachedImage cachedImage = textureCache.computeIfAbsent(tex.input, s -> {
 				try (InputStream stream = existingFileHelper.getResource(new ResourceLocation(modid, s + ".png"), ResourcePackType.CLIENT_RESOURCES, "", "textures").getInputStream())
 				{

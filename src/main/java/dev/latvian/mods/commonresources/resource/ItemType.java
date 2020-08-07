@@ -20,6 +20,7 @@ public final class ItemType
 	public static final ItemType DUST = create("dust").textureParts().textureParts("shine", "shade_1", "shade_2", "shade_3", "shade_4", "border");
 	public static final ItemType ROD = create("rod").textureParts().textureParts("shine", "shade_1", "shade_3", "shade_4");
 	public static final ItemType GEAR = create("gear").textureParts("shade_1", "shade_2", "shade_3", "shade_4", "border");
+	public static final ItemType PLATE = create("plate").textureParts("shine", "shade_1", "shade_2", "shade_3", "shade_4", "border");
 	public static final ItemType STORAGE_BLOCK = create("storage_block").idFormat("%s_block").displayNameFormat("%s Block").block(true).textureParts("shade_1", "shade_2", "shade_3", "shade_4", "border");
 	public static final ItemType ORE = create("ore").block(true).textureParts("stone", "shade_1", "shade_2", "shade_3", "shade_4");
 

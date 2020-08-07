@@ -35,6 +35,7 @@ public class Resource<IT extends ResourceItem>
 	public IT dust;
 	public IT rod;
 	public IT gear;
+	public IT plate;
 	public IT storageBlock;
 	public IT ore;
 
@@ -53,6 +54,7 @@ public class Resource<IT extends ResourceItem>
 		dust = createResourceItem(ItemType.DUST);
 		rod = createResourceItem(ItemType.ROD);
 		gear = createResourceItem(ItemType.GEAR);
+		plate = createResourceItem(ItemType.PLATE);
 		storageBlock = createResourceItem(ItemType.STORAGE_BLOCK);
 		ore = createResourceItem(ItemType.ORE);
 	}
@@ -107,6 +109,17 @@ public class Resource<IT extends ResourceItem>
 		return dust(() -> Items.AIR);
 	}
 
+	public Resource<IT> rod(Supplier<Item> i)
+	{
+		rod.item = i;
+		return this;
+	}
+
+	public Resource<IT> newRod()
+	{
+		return rod(() -> Items.AIR);
+	}
+
 	public Resource<IT> gear(Supplier<Item> i)
 	{
 		gear.item = i;
@@ -118,15 +131,15 @@ public class Resource<IT extends ResourceItem>
 		return gear(() -> Items.AIR);
 	}
 
-	public Resource<IT> rod(Supplier<Item> i)
+	public Resource<IT> plate(Supplier<Item> i)
 	{
-		rod.item = i;
+		plate.item = i;
 		return this;
 	}
 
-	public Resource<IT> newRod()
+	public Resource<IT> newPlate()
 	{
-		return rod(() -> Items.AIR);
+		return plate(() -> Items.AIR);
 	}
 
 	public Resource<IT> storageBlock(Supplier<Item> i, Supplier<Block> b)
@@ -155,7 +168,7 @@ public class Resource<IT extends ResourceItem>
 
 	public Resource<IT> newEverythingExceptOre()
 	{
-		return newItem().newNugget().newDust().newRod().newGear().newStorageBlock();
+		return newItem().newNugget().newDust().newRod().newGear().newPlate().newStorageBlock();
 	}
 
 	public Resource<IT> newEverything()
@@ -171,6 +184,6 @@ public class Resource<IT extends ResourceItem>
 
 	public List<IT> getResourceItems()
 	{
-		return Arrays.asList(item, nugget, dust, rod, gear, storageBlock, ore);
+		return Arrays.asList(item, nugget, dust, rod, gear, plate, storageBlock, ore);
 	}
 }

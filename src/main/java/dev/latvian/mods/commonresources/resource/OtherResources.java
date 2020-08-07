@@ -22,14 +22,21 @@ public class OtherResources
 
 	public static void init()
 	{
-		STONE = add("stone", "Stone", ItemType.create("item").tagName("forge:cobblestone"))
+		STONE = add("stone", "Stone", ItemType.create("item"))
 				.item(() -> Items.COBBLESTONE)
 				.newDust()
 				.newRod()
 				.newGear()
+				.newPlate()
+				.color("border", 0x363636)
+				.color("shine", 0x888888)
+				.color("shade_1", 0x7A7A7A)
+				.color("shade_2", 0x636363)
+				.color("shade_3", 0x595959)
+				.color("shade_4", 0x494949)
 		;
 
-		STONE.rod.disableRecipe = true;
+		STONE.item.tagName = "forge:cobblestone";
 
 		WOODEN = add("wooden", "Wooden", ItemType.create("item").tagName("minecraft:logs"))
 				.rod(() -> Items.STICK)

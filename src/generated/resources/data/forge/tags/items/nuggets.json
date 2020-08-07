@@ -1,12 +1,15 @@
 {
 	"replace": false,
 	"values": [
+		"commonresources:netherite_nugget",
 		"commonresources:copper_nugget",
 		"commonresources:tin_nugget",
 		"commonresources:silver_nugget",
 		"commonresources:lead_nugget",
 		"commonresources:nickel_nugget",
 		"commonresources:platinum_nugget",
+		"commonresources:aluminium_nugget",
+		"commonresources:uranium_nugget",
 		"commonresources:bronze_nugget",
 		"commonresources:steel_nugget",
 		"commonresources:invar_nugget",
